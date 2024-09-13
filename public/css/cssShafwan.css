@@ -1,3 +1,7 @@
+.flex {
+    display: flex;
+}
+
 /* NAVBAR */
 
 .padding_navbar{
@@ -11,6 +15,7 @@
     height: 10vh;
     width: 100%;
     background-color: #362C64;
+    z-index: 1;
 }
 
 .navbar-brand {
@@ -34,7 +39,36 @@
     background-color: white;
     width: 25%;
     height: 90vh;
+}
 
+.menu_left .menu_main { 
+    padding: 5vh 2.5vw;
+}
+
+.menu_left .menu_main .menu_menu {
+    justify-content: space-between;
+    padding-bottom: 4vh;
+}
+
+.menu_left .menu_main .btn-group-vertical{
+    width: 100%;
+}
+.menu_left .menu_main a{
+    width: 100%; 
+    font-size: 1.25rem;
+    padding: 2vh 0;
+    text-decoration: none;
+    color: black;
+    list-style: none;  
+    border-radius: 0;
+}
+
+.menu_left .menu_main a:hover{
+    background-color: rgb(230, 230, 230);
+}
+
+.menu_left .menu_main a img{
+    padding-right: 2vw;
 }
 
 /* DASHBOARD */
@@ -44,24 +78,17 @@
 }
 
 .dashboard_main {
-    padding: 2.5vh 1.75vw;
-    display: flex;
+    padding: 2.5vh 1.75vw; 
     background-color: #EFEFEF;
     width: 100%;
-    height: 90vh;
+    min-height: 90vh;
     gap: 1.75vw;
-}
-
-.dashboard_main .container.main {
-    background-color: white;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
 }
 
 .dashboard_main .container {
     background-color: white;
-    width: 30%;
-    height: 100%;
+    margin-bottom: 2.5vh;
+    width: 100%;
+    height: 40vh;
     border-radius: 10px;
 }
