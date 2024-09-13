@@ -1,0 +1,66 @@
+/* NAVBAR */
+
+.padding_navbar{
+    padding-top: 10vh
+
+}
+
+.navbar {
+    position: fixed !important;
+    font-size: 1rem;
+    height: 10vh;
+    width: 100%;
+    background-color: #362C64;
+}
+
+.navbar-brand {
+    height: 100%;
+    width: 7.5vw;
+}
+
+.navbar-brand img {
+    height: 100%;
+    width: 100%;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: white;
+}
+
+/* MENU */
+
+.dashboard_container {
+    display: flex;
+}
+
+.menu_left {
+    background-color: white;
+    width: 25%;
+    height: 90vh    ;
+}
+
+/* DASHBOARD */
+
+.dashboard_main {
+    padding: 2.5vh 1.75vw;
+    display: flex;
+    background-color: #EFEFEF;
+    width: 100%;
+    height: 90vh;
+    gap: 1.75vw;
+}
+
+.dashboard_main .container.main {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.dashboard_main .container {
+    background-color: purple;
+    width: 30%;
+    height: 100%;
+    border-radius: 10px;
+}
