@@ -30,17 +30,18 @@
 
 /* MENU */
 
-.dashboard_container {
-    display: flex;
-}
-
 .menu_left {
     background-color: white;
     width: 25%;
-    height: 90vh    ;
+    height: 90vh;
+
 }
 
 /* DASHBOARD */
+
+.dashboard_container {
+    display: flex;
+}
 
 .dashboard_main {
     padding: 2.5vh 1.75vw;
@@ -59,7 +60,7 @@
 }
 
 .dashboard_main .container {
-    background-color: purple;
+    background-color: white;
     width: 30%;
     height: 100%;
     border-radius: 10px;
