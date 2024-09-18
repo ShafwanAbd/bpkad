@@ -1,44 +1,53 @@
-body {
-    background-color: #D5D1E7;
-}
+/* login page */
 
-.container {
+.login-page {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
+    background-color: #e6e6fa;
 }
 
-.card {
-    display: flex;
-    flex-direction: row;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+.login-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
-.card-header {
+.login-header {
+    background-color: #362C64;
+    color: white;
+    font-size: 1.5rem;
     text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: #4A3D96;
-    margin-bottom: 10px;
 }
 
-.card-body {
+.login-body {
     padding: 2rem;
-    width: 50%;
 }
 
-.card-body form {
-    display: flex;
-    flex-direction: column;
+.login-btn {
+    background-color: #362C64;
+    color: white;
+    border-radius: 5px;
+    width: 100%;
 }
+
+.login-forgot-password {
+    color: #362C64;
+    text-align: center;
+    display: block;
+    margin-top: 1rem;
+}
+
+
+/* Input field styles */
 
 input[type="email"],
-input[type=password] {
-    border-radius: 8px;
-    border: 1px solid #ddd;
+input[type="password"] {
+    border: 1px solid #ccc;
     padding: 10px;
-    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 1rem;
 }
