@@ -2,6 +2,65 @@
     display: flex;
 }
 
+.active {
+    background-color: #EBEBEB;
+}
+ 
+.main_side_menu {
+    margin-left: 20%;
+    padding: 2vh 1vw; 
+    background-color: #EFEFEF;
+    width: 100%;
+    min-height: 90vh;
+    gap: 1.75vw;
+}
+
+.main_side_menu a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background-color: #362C64;
+    padding: 1.25vh 1.5vw;
+    border-radius: 10px;
+}
+
+.main_side_menu a:hover {
+    background-color: #3f3763;
+    transition: 1s;
+}
+ 
+.main_side_menu .container {
+    padding: 1.5vh 1vw;
+}
+ 
+.main_side_menu .container .data_container {
+    width: 100%;
+    height: 75vh;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+ 
+.main_side_menu .modal-dialog {
+    margin-top: 25vh;
+} 
+
+.red {
+    background-color: red; 
+}
+
+.blue {
+    background-color: blue; 
+}
+
+.yellow {
+    background-color: yellow; 
+}
+
+.btn-primary {
+    background-color: #362C64 !important;
+    border: none !important;
+}
+
 /* NAVBAR */
 
 .padding_navbar{
@@ -37,23 +96,29 @@
 
 .menu_left {
     background-color: white;
-    width: 25%;
+    width: 20%;
     height: 90vh;
+    position: fixed;
 }
 
-.menu_left .menu_main { 
+.menu_left .menu_main {
     padding: 5vh 2.5vw;
 }
 
 .menu_left .menu_main .menu_menu {
     justify-content: space-between;
     padding-bottom: 4vh;
+    font-size: 1rem;
 }
 
-.menu_left .menu_main .btn-group-vertical{
+.menu_left .menu_main .menu_menu h2 {
+    font-size: 1.5rem;
+}
+
+.menu_left .menu_main .menu_item{
     width: 100%;
 }
-.menu_left .menu_main a{
+.menu_left .menu_main .menu_item a{
     width: 100%; 
     font-size: 1.25rem;
     padding: 2vh 0;
@@ -61,34 +126,35 @@
     color: black;
     list-style: none;  
     border-radius: 0;
+    text-align: left;
+    font-size: 1rem;
+    padding-left: 1vw;
 }
 
-.menu_left .menu_main a:hover{
-    background-color: rgb(230, 230, 230);
+.menu_left .menu_main .menu_item a:hover{
+    background-color: #EBEBEB;
+    transition: 0.2s;
 }
 
-.menu_left .menu_main a img{
+.menu_left .menu_main .menu_item a img{
     padding-right: 2vw;
 }
 
-/* DASHBOARD */
-
-.dashboard_container {
-    display: flex;
-}
-
-.dashboard_main {
-    padding: 2.5vh 1.75vw; 
-    background-color: #EFEFEF;
-    width: 100%;
-    min-height: 90vh;
-    gap: 1.75vw;
-}
+/* DASHBOARD */ 
 
 .dashboard_main .container {
     background-color: white;
     margin-bottom: 2.5vh;
     width: 100%;
     height: 40vh;
+    border-radius: 10px;
+}
+
+/* PERMOHONAN */
+
+.permohonan_main .container {
+    background-color: white; 
+    width: 100%;
+    height: 85vh;
     border-radius: 10px;
 }

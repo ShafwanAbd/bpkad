@@ -81,8 +81,8 @@
         </nav>
 
         <main>
-            <div class="padding_navbar">
-            @yield('content')
+            <div class="padding_navbar"> 
+                @yield('content')
             </div>
         </main>
     </div>
