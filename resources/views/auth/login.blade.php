@@ -7,7 +7,7 @@
             @csrf
             <h1>{{ __('Login') }}</h1>
 
-            <input id="email" type="email" name="email" placeholder="Email" required autofocus>
+            <input type="nip" name="nip" placeholder="NIP" required autofocus>
             <input id="password" type="password" name="password" placeholder="Password" required>
 
             <a href="{{ route('password.request') }}">{{ __('Lupa Kata Sandi') }}</a>

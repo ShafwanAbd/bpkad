@@ -16,8 +16,14 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
+    protected $fillable = [ 
+        'role',
+        'nama',
+        'nip',
+        'jabatan',
+        'nomor_hp',
+        'status',
+        'foto',
         'email',
         'password',
     ];
@@ -37,6 +43,7 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
+
     protected function casts(): array
     {
         return [
