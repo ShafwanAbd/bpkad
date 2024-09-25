@@ -1,53 +1,101 @@
-/* login page */
+/* Container login page */
 
-.login-page {
+.login_container {
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
-    background-color: #e6e6fa;
+    align-items: center;
+    justify-content: center;
+    background-color: #D5D1E7;
 }
 
-.login-card {
+
+/* Login form container */
+
+.login_form_container {
     background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    width: 35%;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.login-header {
-    background-color: #362C64;
-    color: white;
-    font-size: 1.5rem;
+
+/* Logo Dalam Form */
+
+.logo_img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 2rem;
+}
+
+
+/* Style Form */
+
+.login_form_container h1 {
     text-align: center;
-}
-
-.login-body {
-    padding: 2rem;
-}
-
-.login-btn {
-    background-color: #362C64;
-    color: white;
-    border-radius: 5px;
-    width: 100%;
-}
-
-.login-forgot-password {
     color: #362C64;
-    text-align: center;
-    display: block;
-    margin-top: 1rem;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.login_form_container input[type="email"],
+.login_form_container input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 
-/* Input field styles */
+/* Submit button*/
 
-input[type="email"],
-input[type="password"] {
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
+.login_form_container button[type="submit"] {
     width: 100%;
-    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background-color: #362C64;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+}
+
+.login_form_container a {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    color: #362C64;
+    text-decoration: none;
+}
+
+
+/* Login Page Kanan*/
+
+.login_image_container {
+    width: 35%;
+    height: 100%;
+    background-image: url('image/abstract_bpkad.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .login_container {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 2rem;
+    }
+    .login_form_container {
+        width: 90%;
+    }
+    .login_image_container {
+        width: 90%;
+        height: 200px;
+        margin-top: 2rem;
+    }
 }
