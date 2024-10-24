@@ -2,6 +2,10 @@
     display: flex;
 }
 
+.text-center {
+    text-align: center;
+}
+
 .active {
     background-color: #EBEBEB;
 }
@@ -90,6 +94,15 @@
 .navbar .navbar-brand,
 .navbar .nav-link {
     color: white;
+}
+
+.navbar .nav-image {
+    padding: 0; 
+    width: 75%; 
+}
+
+.navbar .nav-image img {
+    width: 100%;
 }
 
 /* MENU */

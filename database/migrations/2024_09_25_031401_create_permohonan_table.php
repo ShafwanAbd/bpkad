@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('permohonan', function (Blueprint $table) {
             $table->id();
+            $table->string('perihal');
+            $table->string('no_surat');
+            $table->string('sifat');
+            $table->string('nota_pengantar');
+            $table->string('verifikator1');
+            $table->string('verifikator2');
+            $table->string('verifikator3');
+            $table->string('verifikator4');
+            $table->string('penandatangan');
+            $table->string('tembusan');
+            $table->string('pemohon');
+            $table->string('dokumen');
+            $table->string('status');
             $table->timestamps();
         });
     }

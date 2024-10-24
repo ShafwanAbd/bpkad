@@ -56,17 +56,32 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-                        @else
+                        @else 
+                            <li class="dropdown nav-item">
+                                <a class="nav-link nav-image pt-1" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="{{ asset('image/Doorbell.png') }}">
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#">Notification 1 || Notification 1 || Notification 1 || Notification 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Notification 1 || Notification 1 || Notification 1 || Notification 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Notification 1 || Notification 1 || Notification 1 || Notification 1</a></li>
+                                </ul>
+                            </li> 
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->nama }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ url('/akun') }}">
+                                        Akun
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Keluar') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
