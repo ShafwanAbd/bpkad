@@ -9,7 +9,7 @@
     <div class="permohonan_main main_side_menu">  
         <div class="container shadow"> 
             
-            <form method="POST" action="{{ url('/permohonan/createlangsung') }}">
+            <form method="POST" action="{{ url('/permohonan/createlangsung') }}" enctype="multipart/form-data"> 
                 @csrf
                 
                 <div class="row mb-3">
@@ -56,7 +56,7 @@
                     <label for="name" class="col-md-4 col-form-label text-md-end">Dokumen</label>
 
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control" name="dokumen" required>
+                        <input id="name" type="file" class="form-control" name="dokumen" required>
                     </div>
                 </div>
 

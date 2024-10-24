@@ -21,6 +21,7 @@ Route::get('/home', function () {
 Route::get('/dashboard', [CommonController::class, 'dashboard_index']);
 
 Route::get('/permohonan', [CommonController::class, 'permohonan_index']);
+Route::get('/permohonan/data/{id}', [CommonController::class, 'permohonan_detail']);
 Route::get('/permohonan/createlangsung', [CommonController::class, 'permohonan_create']);
 Route::post('/permohonan/createlangsung', [CommonController::class, 'permohonan_create_upload']);
 Route::get('/permohonan/createverifikator', [CommonController::class, 'permohonan_verifikator']);

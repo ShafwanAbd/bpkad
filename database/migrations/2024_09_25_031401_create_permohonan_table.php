@@ -16,16 +16,16 @@ return new class extends Migration
             $table->string('perihal');
             $table->string('no_surat');
             $table->string('sifat');
-            $table->string('nota_pengantar');
-            $table->string('verifikator1');
-            $table->string('verifikator2');
-            $table->string('verifikator3');
-            $table->string('verifikator4');
+            $table->string('nota_pengantar')->nullable();
+            $table->string('verifikator1')->nullable();
+            $table->string('verifikator2')->nullable();
+            $table->string('verifikator3')->nullable();
+            $table->string('verifikator4')->nullable();
             $table->string('penandatangan');
             $table->string('tembusan');
             $table->string('pemohon');
-            $table->string('dokumen');
-            $table->string('status');
+            $table->string('dokumen')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
