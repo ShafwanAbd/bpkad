@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.app_wo_navbar') @section('content')
 <div class="login_container">
 
     <div class="login_form_container">
@@ -8,7 +8,11 @@
             <h1>{{ __('Login') }}</h1>
 
             <input type="nip" name="nip" placeholder="NIP" required autofocus>
-            <input id="password" type="password" name="password" placeholder="Password" required>
+
+            <div class="password-container">
+                <input id="password" type="password" name="password" placeholder="Kata Sandi" required>
+                <button type="button" onclick="togglePassword()">Lihat</button>
+            </div>
 
             <a href="{{ route('password.request') }}">{{ __('Lupa Kata Sandi') }}</a>
             <button type="submit">{{ __('Masuk') }}</button>
@@ -19,4 +23,16 @@
     <div class="login_image_container"></div>
 
 </div>
+
+<script>
+    function togglePassword() {
+        var passwordInput = document.getElementById("password");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
+</script>
+
 @endsection
