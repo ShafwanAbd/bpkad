@@ -67,9 +67,13 @@
                             <td>{{ $val->pemohon }}</td>
                             <td>{{ $val->penandatangan }}</td> 
                             @if($val->status == 0)
-                            <td><div class="btn btn-primary">Belum Diverifikasi</div></td>  
+                            <td>
+                                <div class="btn btn-primary">Belum Diverifikasi</div>
+                            </td>  
                             @elseif($val->status == 1)
-                            <td>Sudah Diverifikasi</td>  
+                            <td>
+                                <div class="btn btn-primary">Sudah Diverifikasi</div>
+                            </td>  
                             @endif
                         </tr>
                     @endforeach
