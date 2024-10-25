@@ -9,10 +9,10 @@
 .active {
     background-color: #EBEBEB;
 }
- 
+
 .main_side_menu {
     margin-left: 20%;
-    padding: 2vh 1vw; 
+    padding: 2vh 1vw;
     background-color: #EFEFEF;
     width: 100%;
     min-height: 90vh;
@@ -32,32 +32,32 @@
     background-color: #3f3763;
     transition: 1s;
 }
- 
+
 .main_side_menu .container {
     padding: 1.5vh 1vw;
 }
- 
+
 .main_side_menu .container .data_container {
     width: 100%;
     height: 75vh;
     border-radius: 10px;
     border: 1px solid black;
 }
- 
+
 .main_side_menu .modal-dialog {
     margin-top: 25vh;
-} 
+}
 
 .red {
-    background-color: red; 
+    background-color: red;
 }
 
 .blue {
-    background-color: blue; 
+    background-color: blue;
 }
 
 .yellow {
-    background-color: yellow; 
+    background-color: yellow;
 }
 
 .btn-primary {
@@ -94,11 +94,11 @@ tr .hover1 {
     padding-top: 30vh;
 }
 
+
 /* NAVBAR */
 
-.padding_navbar{
+.padding_navbar {
     padding-top: 10vh
-
 }
 
 .navbar {
@@ -126,13 +126,14 @@ tr .hover1 {
 }
 
 .navbar .nav-image {
-    padding: 0; 
-    width: 75%; 
+    padding: 0;
+    width: 75%;
 }
 
 .navbar .nav-image img {
     width: 100%;
 }
+
 
 /* MENU */
 
@@ -157,32 +158,34 @@ tr .hover1 {
     font-size: 1.5rem;
 }
 
-.menu_left .menu_main .menu_item{
+.menu_left .menu_main .menu_item {
     width: 100%;
 }
-.menu_left .menu_main .menu_item a{
-    width: 100%; 
+
+.menu_left .menu_main .menu_item a {
+    width: 100%;
     font-size: 1.25rem;
     padding: 2vh 0;
     text-decoration: none;
     color: black;
-    list-style: none;  
+    list-style: none;
     border-radius: 0;
     text-align: left;
     font-size: 1rem;
     padding-left: 1vw;
 }
 
-.menu_left .menu_main .menu_item a:hover{
+.menu_left .menu_main .menu_item a:hover {
     background-color: #EBEBEB;
     transition: 0.2s;
 }
 
-.menu_left .menu_main .menu_item a img{
+.menu_left .menu_main .menu_item a img {
     padding-right: 2vw;
 }
 
-/* DASHBOARD */ 
+
+/* DASHBOARD */
 
 .dashboard_main .container {
     background-color: white;
@@ -192,14 +195,16 @@ tr .hover1 {
     border-radius: 10px;
 }
 
+
 /* PERMOHONAN */
 
 .permohonan_main .container {
-    background-color: white; 
+    background-color: white;
     width: 100%;
     height: 85vh;
     border-radius: 10px;
 }
+
 
 /* PERMOHONAN DETAIL */
 
@@ -208,12 +213,12 @@ tr .hover1 {
     justify-content: space-between;
 }
 
-.permohonan_detail .container_image { 
+.permohonan_detail .container_image {
     align-content: end;
     width: 20%;
 }
 
-.permohonan_detail .container_image img { 
+.permohonan_detail .container_image img {
     height: 100%;
     width: 100%;
 }
