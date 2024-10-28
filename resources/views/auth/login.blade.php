@@ -7,12 +7,8 @@
             @csrf
             <h1>{{ __('Login') }}</h1>
 
-            <input type="nip" name="nip" placeholder="NIP" required autofocus>
-
-            <div class="password-container">
-                <input id="password" type="password" name="password" placeholder="Kata Sandi" required>
-                <button type="button" onclick="togglePassword()">Lihat</button>
-            </div>
+            <input type="nip" name="nip" placeholder="Nomor Induk Pegawai" required autofocus>
+            <input id="password" type="password" name="password" placeholder="Kata Sandi" required>
 
             <a href="{{ route('password.request') }}">{{ __('Lupa Kata Sandi') }}</a>
             <button type="submit">{{ __('Masuk') }}</button>
@@ -23,16 +19,5 @@
     <div class="login_image_container"></div>
 
 </div>
-
-<script>
-    function togglePassword() {
-        var passwordInput = document.getElementById("password");
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-        } else {
-            passwordInput.type = "password";
-        }
-    }
-</script>
 
 @endsection
