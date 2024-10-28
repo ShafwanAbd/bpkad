@@ -39,7 +39,7 @@
 
 .main_side_menu .container .data_container {
     width: 100%;
-    height: 75vh;
+    min-height: 75vh;
     border-radius: 10px;
     border: 1px solid black;
 }
@@ -58,6 +58,10 @@
 
 .yellow {
     background-color: yellow;
+}
+
+.accepted {
+    background-color: green !important;
 }
 
 .btn-primary {
@@ -92,6 +96,10 @@ tr .hover1 {
     align-items: center;
     align-self: center;
     padding-top: 30vh;
+}
+ 
+.text-align-center {
+    text-align: center;
 }
 
 
@@ -201,8 +209,13 @@ tr .hover1 {
 .permohonan_main .container {
     background-color: white;
     width: 100%;
-    height: 85vh;
+    min-height: 85vh;
+    height: 100%;
     border-radius: 10px;
+}
+
+.permohonan_main_verifikator .container { 
+    height: 100%;
 }
 
 

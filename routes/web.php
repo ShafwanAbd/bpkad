@@ -25,12 +25,16 @@ Route::get('/permohonan/data/{id}', [CommonController::class, 'permohonan_detail
 Route::get('/permohonan/createlangsung', [CommonController::class, 'permohonan_create']);
 Route::post('/permohonan/createlangsung', [CommonController::class, 'permohonan_create_upload']);
 Route::get('/permohonan/createverifikator', [CommonController::class, 'permohonan_verifikator']);
-
-
+Route::post('/permohonan/createverifikator', [CommonController::class, 'permohonan_create_verifikator_upload']);
+Route::get('/permohonan/tandatangan/{id}', [CommonController::class, 'permohonan_tandatangan']);
+Route::get('/permohonan/verifikasi1/{id}', [CommonController::class, 'permohonan_verifikasi1']);
+Route::get('/permohonan/verifikasi2/{id}', [CommonController::class, 'permohonan_verifikasi2']);
+Route::get('/permohonan/verifikasi3/{id}', [CommonController::class, 'permohonan_verifikasi3']);
+Route::get('/permohonan/verifikasi4/{id}', [CommonController::class, 'permohonan_verifikasi4']);
 
 Route::get('/penandatanganan', [CommonController::class, 'dashboard_index']);
 Route::get('/tembusan', [CommonController::class, 'dashboard_index']);
-Route::get('/suratmasuk', [CommonController::class, 'dashboard_index']);
+Route::get('/suratmasuk', [CommonController::class, 'suratmasuk_index']);
 Route::get('/suratkeluar', [CommonController::class, 'dashboard_index']);
 Route::get('/disposisi', [CommonController::class, 'dashboard_index']);
 // General

@@ -32,9 +32,9 @@ return new class extends Migration
             array(
                 // THE ADMINs[
                 [
-                    'role' => 'superadmin',
+                    'role' => 'Superadmin',
                     'nama' => 'ADMIN SEKRETARIAT',
-                    'nip' => '15243',
+                    'nip' => '123451',
                     'jabatan' => null,
                     'nomor_hp' => null,
                     'status' => null,
@@ -43,9 +43,9 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'admin',
+                    'role' => 'Admin',
                     'nama' => 'ADMIN BIDANG ANGGARAN',
-                    'nip' => '15243',
+                    'nip' => '123452',
                     'jabatan' => null,
                     'nomor_hp' => null,
                     'status' => null,
@@ -54,9 +54,9 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'admin',
+                    'role' => 'Admin',
                     'nama' => 'ADMIN BIDANG AKUNTANSI',
-                    'nip' => '15243',
+                    'nip' => '123453',
                     'jabatan' => null,
                     'nomor_hp' => null,
                     'status' => null,
@@ -65,9 +65,9 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'admin',
+                    'role' => 'Admin',
                     'nama' => 'ADMIN PERBENDAHARAAN DAN KAS DAERAH',
-                    'nip' => '15243',
+                    'nip' => '123454',
                     'jabatan' => null,
                     'nomor_hp' => null,
                     'status' => null,
@@ -76,9 +76,9 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'admin',
+                    'role' => 'Admin',
                     'nama' => 'ADMIN ASET DAERAH',
-                    'nip' => '15243',
+                    'nip' => '123455',
                     'jabatan' => null,
                     'nomor_hp' => null,
                     'status' => null,
@@ -210,7 +210,7 @@ return new class extends Migration
                 ],
                 
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'YANI KAMILA, S.Sos, M.Si',
                     'nip' => '19750325 200604 2 030',
                     'jabatan' => 'Analis Kepegawaian Ahli Muda',
@@ -221,7 +221,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'NUNIEK YUNIA WIDIATI R, SE, M.M',
                     'nip' => '19790606 200901 2 011',
                     'jabatan' => 'Penelaah Pendapatan dan Belanja',
@@ -232,7 +232,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'RENI MARIATI, SE, M.M',
                     'nip' => '19751028 200902 2 002',
                     'jabatan' => 'Analis Keuangan Pusat dan Daerah Ahli Muda',
@@ -243,7 +243,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'JESICA ARIZONA, ST, M.M',
                     'nip' => '19870111 201001 2 010',
                     'jabatan' => 'Perencana Ahli Muda',
@@ -254,7 +254,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'TITA RAHAYU, SE',
                     'nip' => '19780324 200801 2 005',
                     'jabatan' => 'Analis Perbendaharaan',
@@ -265,7 +265,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'DODI MUSADAD, SE',
                     'nip' => '19740610 200901 1 005',
                     'jabatan' => 'Analis Pembayaran Perhitungan Pihak Ketiga dan Pembayaran Tuntutan Ganti Rugi',
@@ -276,7 +276,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'WINI NURYANI, SE, M.M',
                     'nip' => '19780318 201001 2 001',
                     'jabatan' => 'Analis Perbendaharaan',
@@ -287,7 +287,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'DIANA APRIANTY, SE, M.Si',
                     'nip' => '19810420 201001 2 002',
                     'jabatan' => 'Analis Pelaporan dan Transaksi Keuangan',
@@ -298,7 +298,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'JIMMI BUDI MULIA, SE, M.M',
                     'nip' => '19811020 200312 1 001',
                     'jabatan' => 'Penata Keuangan',
@@ -309,7 +309,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'RICKY SEPTIAN, SE',
                     'nip' => '19860922 201101 1 002',
                     'jabatan' => 'Analis Laporan Realisasi Anggaran',
@@ -320,7 +320,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'IIS KURNIA, S.IP',
                     'nip' => '19821122 200801 2 006',
                     'jabatan' => 'Penyusun Laporan Keuangan',
@@ -331,7 +331,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'ADE SYAWALUDIN, SE, M.M',
                     'nip' => '19780901 200504 1 001',
                     'jabatan' => 'Penyusun Rencana Kebutuhan Sarana dan Prasarana',
@@ -342,7 +342,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'NITA INSYANI, S.IP',
                     'nip' => '19821008 200901 2 003',
                     'jabatan' => 'Analis Perencanaan, Evaluasi dan Pelaporan',
@@ -353,7 +353,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'EKA LISMAYATI, SE',
                     'nip' => '19831115 200902 2 004',
                     'jabatan' => 'Bendahara',
@@ -364,7 +364,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'VERA PRAMANITA, SE',
                     'nip' => '19840319 201503 2 003',
                     'jabatan' => 'Analis Laporan Realisasi Anggaran',
@@ -375,7 +375,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'YOVI MULYANA, SE, M.Si',
                     'nip' => '19861207 201503 1 003',
                     'jabatan' => 'Analis Kebijakan Klasifikasi Barang',
@@ -386,7 +386,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'IIS PITRI ANADEWI, SE, M.M',
                     'nip' => '19860924 201101 2 003',
                     'jabatan' => 'Penata Keuangan',
@@ -397,7 +397,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'ASRI DAMAYANTI, S.IP',
                     'nip' => '19790510 200701 2 011',
                     'jabatan' => 'Penata Keuangan',
@@ -408,7 +408,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'DERRY TAUPIQ, A.Md',
                     'nip' => '19821005 200902 1 003',
                     'jabatan' => 'Analis Aset Daerah',
@@ -419,7 +419,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'AGUS KURNIAWAN, S.IP',
                     'nip' => '19710902 200312 1 006',
                     'jabatan' => 'Penyusun Rencana Kebutuhan Rumah Tangga dan Perlengkapan',
@@ -430,7 +430,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'REDI CAHYADI, ST, M.M',
                     'nip' => '19860729 201101 1 002',
                     'jabatan' => 'Penata Keuangan',
@@ -441,7 +441,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'SHINTA FARIDZATUNISA, S. Sos',
                     'nip' => '19810820 200901 2 006',
                     'jabatan' => 'Analis Keuangan',
@@ -452,7 +452,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'INDA RIZQI FARHANI, A.Md',
                     'nip' => '19890628 201101 2 003',
                     'jabatan' => 'Bendahara',
@@ -463,7 +463,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'IRMA SURYANI, S.IP',
                     'nip' => '19791110 200901 2 008',
                     'jabatan' => 'Analis Pengembangan SDM Aparatur',
@@ -474,7 +474,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'FEBI SATRIANA, SE, M.Si',
                     'nip' => '19860215 201001 1 002',
                     'jabatan' => 'Verifikator',
@@ -485,7 +485,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'KIKI WAHYUNI, S.IP',
                     'nip' => '19840612 200901 2 009',
                     'jabatan' => 'Analis Standar Harga',
@@ -496,7 +496,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'SUPENO, S.IP',
                     'nip' => '19770916 201001 1 002',
                     'jabatan' => 'Analis Aset Daerah',
@@ -507,7 +507,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'RENI RENITA, S.IP',
                     'nip' => '19781129 201001 2 001',
                     'jabatan' => 'Penata Laporan Keuangan',
@@ -518,7 +518,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'NANO SUSANTO, S.IP',
                     'nip' => '19840801 201001 1 003',
                     'jabatan' => 'Analis Laporan Realisasi Anggaran',
@@ -529,7 +529,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'DIAN MAYASARI, S.IP',
                     'nip' => '19851005 201001 2 001',
                     'jabatan' => 'Analis Perencanaan, Evaluasi dan Pelaporan',
@@ -540,7 +540,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'ASEP RIDWAN, SE',
                     'nip' => '19851206 201001 1 001',
                     'jabatan' => 'Analis Kebijakan Klasifikasi Barang',
@@ -551,7 +551,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'GUGIALANA WAHYU',
                     'nip' => '19820702 200501 1 005',
                     'jabatan' => 'Analis Laporan Realisasi Anggaran',
@@ -562,7 +562,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'INEU NURAENI',
                     'nip' => '19731115 200701 2 008',
                     'jabatan' => 'Analis Penyelesaian Laporan Hasil Pemeriksaan',
@@ -573,7 +573,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'DIDIN BAYANUDDIN',
                     'nip' => '19730902 200701 1 005',
                     'jabatan' => 'Analis Laporan Realisasi Anggaran',
@@ -584,7 +584,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'FILZA RIDWAN ROSHAN, S.Tr.IP',
                     'nip' => '19971101 202208 1 001',
                     'jabatan' => 'Sekretaris',
@@ -595,7 +595,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'ANGGA PRAMADITA, A.Md',
                     'nip' => '19820308 201503 1 001',
                     'jabatan' => 'Arsiparis Terampil',
@@ -606,7 +606,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'DIAN NUGRAHA, A.Md',
                     'nip' => '19840602 201503 1 001',
                     'jabatan' => 'Arsiparis Terampil',
@@ -617,7 +617,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'RIZKI HIKMAWAN, A.Md',
                     'nip' => '19920226 201903 1 004',
                     'jabatan' => 'Pranata Komputer Pelaksana',
@@ -628,7 +628,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'YUDI DWI PERMADI',
                     'nip' => '19740314 201212 1 001',
                     'jabatan' => 'Pengolah Data Kebijakan Klasifikasi Barang',
@@ -639,7 +639,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'WAHYU YOGA PAMUNGKAS, A.Md, Ak',
                     'nip' => '20000516 202408 1 001',
                     'jabatan' => 'Pengolah Data dan Informasi',
@@ -650,7 +650,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'EGITA ANNISSAA ARDIANA, A.Md, AK',
                     'nip' => '20011218 202408 2 001',
                     'jabatan' => 'Pengolah Data dan Informasi',
@@ -661,7 +661,7 @@ return new class extends Migration
                     'foto' => null,
                 ],
                 [
-                    'role' => 'staf',
+                    'role' => 'Staf',
                     'nama' => 'ADI ABDUL GANI, S.Kom',
                     'nip' => '19911126 202321 1 017',
                     'jabatan' => 'Pranata Komputer',
