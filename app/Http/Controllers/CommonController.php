@@ -27,9 +27,25 @@ class CommonController extends Controller
         return view('main.suratmasukcreate');
     }   
 
-    public function suratmasuk_create_upload(){ 
+    public function suratmasuk_create_upload(Request $request){  
+
+        $table->string('perihal');
+        $table->string('no_surat'); 
+        $table->string('informasi_ringkas');   
+        $table->string('pengirim');
+        $table->string('dokumen')->nullable();
+        $table->string('status_diteruskan');
+        $table->string('status_disposisi');
         
-        $model1 = new Suratmasuk();
+        $model1 = new Suratmasuk();        
+        
+        $model1->perihal = $request->perihal;
+        $model1->perihal = $request->perihal;
+        $model1->perihal = $request->perihal;
+        $model1->perihal = $request->perihal;
+        $model1->perihal = $request->perihal;
+        $model1->perihal = $request->perihal;
+
         $model1->save();
 
         return redirect('/suratmasuk');
@@ -72,20 +88,20 @@ class CommonController extends Controller
     }
 
     public function permohonan_create_upload(Request $request){  
-
-        $model1 = new Permohonan();
-        $model1->perihal = $request->perihal;
-        $model1->no_surat = $request->no_surat;
-        $model1->sifat = $request->sifat;
-        $model1->pemohon = Auth::user()->nama;
-        $model1->penandatangan = $request->penandatangan;
-        if ($request->tembusan){ 
-            $model1->tembusan = implode(', ', $request->tembusan); 
-        }
-        $model1->status = 0; 
-        $model1->save();    
-
+ 
         if ($request->file('dokumen')) {
+            $model1 = new Permohonan();
+            $model1->perihal = $request->perihal;
+            $model1->no_surat = $request->no_surat;
+            $model1->sifat = $request->sifat;
+            $model1->pemohon = Auth::user()->nama;
+            $model1->penandatangan = $request->penandatangan;
+            if ($request->tembusan){ 
+                $model1->tembusan = implode(', ', $request->tembusan); 
+            }
+            $model1->status = 0; 
+            $model1->save();  
+
             $file = $request->file('dokumen');
     
             // Periksa apakah file yang diunggah adalah PDF
@@ -114,26 +130,27 @@ class CommonController extends Controller
     }
 
     public function permohonan_create_verifikator_upload(Request $request){  
-
-        $model1 = new Permohonan();
-        $model1->perihal = $request->perihal;
-        $model1->no_surat = $request->no_surat;
-        $model1->sifat = $request->sifat;
-        $model1->pemohon = Auth::user()->nama;
-        $model1->penandatangan = $request->penandatangan;
-        $model1->nota_pengantar = $request->nota_pengantar;
-        $model1->verifikator1 = $request->verifikator1;
-        $model1->verifikator1 = $request->verifikator1;
-        $model1->verifikator2 = $request->verifikator2;
-        $model1->verifikator3 = $request->verifikator3;
-        $model1->verifikator4 = $request->verifikator4;
-        if ($request->tembusan){ 
-            $model1->tembusan = implode(', ', $request->tembusan); 
-        }
-        $model1->status = 0; 
-        $model1->save();    
-
+ 
         if ($request->file('dokumen')) {
+
+            $model1 = new Permohonan();
+            $model1->perihal = $request->perihal;
+            $model1->no_surat = $request->no_surat;
+            $model1->sifat = $request->sifat;
+            $model1->pemohon = Auth::user()->nama;
+            $model1->penandatangan = $request->penandatangan;
+            $model1->nota_pengantar = $request->nota_pengantar;
+            $model1->verifikator1 = $request->verifikator1;
+            $model1->verifikator1 = $request->verifikator1;
+            $model1->verifikator2 = $request->verifikator2;
+            $model1->verifikator3 = $request->verifikator3;
+            $model1->verifikator4 = $request->verifikator4;
+            if ($request->tembusan){ 
+                $model1->tembusan = implode(', ', $request->tembusan); 
+            }
+            $model1->status = 0; 
+            $model1->save();    
+
             $file = $request->file('dokumen');
     
             // Periksa apakah file yang diunggah adalah PDF

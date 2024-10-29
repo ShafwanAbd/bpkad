@@ -10,7 +10,7 @@
         <div class="container shadow"> 
 
             
-            <form method="POST" action="{{ url('/permohonan/createlangsung') }}" enctype="multipart/form-data"> 
+            <form method="POST" action="{{ url('/suratmasuk/create') }}" enctype="multipart/form-data"> 
                 @csrf
                 <div class="text-align-center py-4">
                 <h2>Surat Masuk</h2> 
@@ -36,7 +36,7 @@
                     <label for="name" class="col-md-4 col-form-label text-md-end">Pengirim</label>
 
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control" name="no_surat" required>
+                        <input id="name" type="text" class="form-control" name="pengirim" required>
                     </div>
                 </div> 
 
@@ -44,7 +44,7 @@
                     <label for="name" class="col-md-4 col-form-label text-md-end">Informasi Ringkas</label>
 
                     <div class="col-md-6">
-                        <textarea id="name" class="form-control" name="no_surat" rows="3" required></textarea>
+                        <textarea id="name" class="form-control" name="informasi_ringkas" rows="3" required></textarea>
                     </div> 
                 </div> 
 
