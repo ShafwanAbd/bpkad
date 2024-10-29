@@ -135,10 +135,18 @@ class CommonController extends Controller
 
         if ($request->file('dokumen')) {
             $file = $request->file('dokumen');
-            $namaFile = $model1->id . ".png";
-
-            $model1->dokumen = $namaFile;
-            $file->move('dokumen/', $namaFile);
+    
+            // Periksa apakah file yang diunggah adalah PDF
+            if ($file->getClientOriginalExtension() == 'pdf') {
+                // Ubah ekstensi nama file menjadi .pdf
+                $namaFile = "Dokumen" . $model1->id . ".pdf";
+    
+                $model1->dokumen = $namaFile;
+                $file->move('dokumen/', $namaFile);
+            } else {
+                // Jika bukan PDF, Anda bisa mengembalikan pesan error
+                return back()->withErrors(['dokumen' => 'File yang diunggah harus dalam format PDF']);
+            }
         }
         $model1->save();    
 

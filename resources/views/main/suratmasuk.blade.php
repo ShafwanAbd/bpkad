@@ -25,11 +25,10 @@
                 <thead>
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">No. Surat</th>
-                        <th scope="col">Perihal</th>
-                        <th scope="col">Pengirim</th>
-                        <th scope="col">Penanda Tanganan</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Perihal</th> 
+                        <th scope="col">Pengirim</th>  
+                        <th scope="col">Diteruskan</th>
+                        <th scope="col">Disposisi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,17 +38,25 @@
                     @foreach($datas1 as $key=>$val) 
                         <tr class="hover1" onclick="window.location.href='{{ url("/permohonan/data/$val->id") }}'" style="cursor: pointer;">
                             <td>{{ $i++ }}</td>
-                            <td>{{ $val->no_surat }}</td>
-                            <td>{{ $val->perihal }}</td>
-                            <td>{{ $val->pemohon }}</td>
-                            <td>{{ $val->penandatangan }}</td> 
-                            @if($val->status == 0)
+                            <td>{{ $val->Perihal }}</td>
+                            <td>{{ $val->Pengirim }}</td> 
+                            @if($val->status_diteruskan == 0)
                             <td>
-                                <div class="btn btn-primary">Belum Diverifikasi</div>
+                                <div class="btn btn-primary">Belum</div>
                             </td>  
                             @elseif($val->status == 1)
                             <td>
-                                <div class="btn btn-primary">Sudah Diverifikasi</div>
+                                <div class="btn btn-primary">Sudah</div>
+                            </td>  
+                            @endif
+
+                            @if($val->status_disposisi == 0)
+                            <td>
+                                <div class="btn btn-primary">Belum</div>
+                            </td>  
+                            @elseif($val->status_disposisi == 1)
+                            <td>
+                                <div class="btn btn-primary">Sudah</div>
                             </td>  
                             @endif
                         </tr>

@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('suratmasuk', function (Blueprint $table) {
             $table->id();
+            $table->string('perihal')->nullable();
+            $table->string('no_surat'); 
+            $table->string('informasi_ringkas');   
+            $table->string('pengirim');
+            $table->string('dokumen')->nullable();
+            $table->string('status_diteruskan');
+            $table->string('status_disposisi');
             $table->timestamps();
         });
     }
