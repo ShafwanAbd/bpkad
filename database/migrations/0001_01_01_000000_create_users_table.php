@@ -90,7 +90,7 @@ return new class extends Migration
                 [
                     'role' => 'Kepala Badan',
                     'nama' => 'Drs. H. ASEP GOPARULLAH, M.Pd',
-                    'nip' => '19700215 198903 1 004',
+                    'nip' => '197002151989031004',
                     'jabatan' => 'Kepala Badan',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -101,7 +101,7 @@ return new class extends Migration
                 [
                     'role' => 'Sekretaris Badan',
                     'nama' => 'Hj. HESTI WIDIAWATI, SE, M.M',
-                    'nip' => '19770725 200312 2 010',
+                    'nip' => '197707252003122010',
                     'jabatan' => 'Sekretaris Badan',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -112,7 +112,7 @@ return new class extends Migration
                 [
                     'role' => 'Kepala Bidang',
                     'nama' => 'DEMY RAHAYU, SP',
-                    'nip' => '19701215 200801 1 019',
+                    'nip' => '197012152008011019',
                     'jabatan' => 'Kabid Anggaran',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -123,7 +123,7 @@ return new class extends Migration
                 [
                     'role' => 'Kepala Bidang',
                     'nama' => 'Hj. YENI MULYANI, SE, M.M',
-                    'nip' => '19670906 199203 2 008',
+                    'nip' => '196709061992032008',
                     'jabatan' => 'Kabid Aset Daerah',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -134,7 +134,7 @@ return new class extends Migration
                 [
                     'role' => 'Kepala Bidang',
                     'nama' => 'GHUFRON AFANDI, SE, M.M',
-                    'nip' => '19770621 200902 1 002',
+                    'nip' => '197706212009021002',
                     'jabatan' => 'Kabid Akuntansi',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -145,7 +145,7 @@ return new class extends Migration
                 [
                     'role' => 'Kepala Bidang',
                     'nama' => 'TENI NURHAYATI, SE, M.M',
-                    'nip' => '19730603 201101 2 001',
+                    'nip' => '197306032011012001',
                     'jabatan' => 'Kabid Perbendaharaan dan Kas Daerah',
                     'nomor_hp' => null,
                     'status' => 'tidak aktif',
@@ -156,7 +156,7 @@ return new class extends Migration
                 [
                     'role' => 'Kepala Sub Bidang',
                     'nama' => 'YANI SULAEMAN AGUSTIN, S.Sos, M.Si',
-                    'nip' => '19750723 200701 1 003',
+                    'nip' => '197507232007011003',
                     'jabatan' => 'Kasubid Penatausahaan Aset Daerah',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -167,7 +167,7 @@ return new class extends Migration
                 [
                     'role' => 'Kepala Sub Bidang',
                     'nama' => 'RUDI KURNIAWAN, ST',
-                    'nip' => '19800520 200604 1 012',
+                    'nip' => '198005202006041012',
                     'jabatan' => 'Kasubid Perbendaharaan',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -178,7 +178,7 @@ return new class extends Migration
                 [
                     'role' => 'Kepala Sub Bidang',
                     'nama' => 'DEWI ZAKIYAH, SE, M.Si',
-                    'nip' => '19760402 201001 2 003',
+                    'nip' => '197604022010012003',
                     'jabatan' => 'Kasubid Kas Daerah',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -189,7 +189,7 @@ return new class extends Migration
                 [
                     'role' => 'Kepala Sub Bidang',
                     'nama' => 'ASEP RIO, SH',
-                    'nip' => '19760319 200901 1 007',
+                    'nip' => '197603192009011007',
                     'jabatan' => 'Kasubid pemanfaatan dan Pengamanan Aset Daerah',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -200,7 +200,7 @@ return new class extends Migration
                 [
                     'role' => 'Kepala Sub Bidang',
                     'nama' => 'SURYA AGUSTINUS RIFFENDI, SE',
-                    'nip' => '19830818 200902 1 002',
+                    'nip' => '198308182009021002',
                     'jabatan' => 'Kasubid Perencanaan Anggaran',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -212,7 +212,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'YANI KAMILA, S.Sos, M.Si',
-                    'nip' => '19750325 200604 2 030',
+                    'nip' => '197503252006042030',
                     'jabatan' => 'Analis Kepegawaian Ahli Muda',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -223,7 +223,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'NUNIEK YUNIA WIDIATI R, SE, M.M',
-                    'nip' => '19790606 200901 2 011',
+                    'nip' => '197906062009012011',
                     'jabatan' => 'Penelaah Pendapatan dan Belanja',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -234,7 +234,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'RENI MARIATI, SE, M.M',
-                    'nip' => '19751028 200902 2 002',
+                    'nip' => '197510282009022002',
                     'jabatan' => 'Analis Keuangan Pusat dan Daerah Ahli Muda',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -245,7 +245,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'JESICA ARIZONA, ST, M.M',
-                    'nip' => '19870111 201001 2 010',
+                    'nip' => '198701112010012010',
                     'jabatan' => 'Perencana Ahli Muda',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -256,7 +256,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'TITA RAHAYU, SE',
-                    'nip' => '19780324 200801 2 005',
+                    'nip' => '197803242008012005',
                     'jabatan' => 'Analis Perbendaharaan',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -267,7 +267,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'DODI MUSADAD, SE',
-                    'nip' => '19740610 200901 1 005',
+                    'nip' => '197406102009011005',
                     'jabatan' => 'Analis Pembayaran Perhitungan Pihak Ketiga dan Pembayaran Tuntutan Ganti Rugi',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -278,7 +278,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'WINI NURYANI, SE, M.M',
-                    'nip' => '19780318 201001 2 001',
+                    'nip' => '197803182010012001',
                     'jabatan' => 'Analis Perbendaharaan',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -289,7 +289,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'DIANA APRIANTY, SE, M.Si',
-                    'nip' => '19810420 201001 2 002',
+                    'nip' => '198104202010012002',
                     'jabatan' => 'Analis Pelaporan dan Transaksi Keuangan',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -300,7 +300,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'JIMMI BUDI MULIA, SE, M.M',
-                    'nip' => '19811020 200312 1 001',
+                    'nip' => '198110202003121001',
                     'jabatan' => 'Penata Keuangan',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -311,7 +311,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'RICKY SEPTIAN, SE',
-                    'nip' => '19860922 201101 1 002',
+                    'nip' => '198609222011011002',
                     'jabatan' => 'Analis Laporan Realisasi Anggaran',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -322,7 +322,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'IIS KURNIA, S.IP',
-                    'nip' => '19821122 200801 2 006',
+                    'nip' => '198211222008012006',
                     'jabatan' => 'Penyusun Laporan Keuangan',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -333,7 +333,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'ADE SYAWALUDIN, SE, M.M',
-                    'nip' => '19780901 200504 1 001',
+                    'nip' => '197809012005041001',
                     'jabatan' => 'Penyusun Rencana Kebutuhan Sarana dan Prasarana',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -344,7 +344,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'NITA INSYANI, S.IP',
-                    'nip' => '19821008 200901 2 003',
+                    'nip' => '198210082009012003',
                     'jabatan' => 'Analis Perencanaan, Evaluasi dan Pelaporan',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -355,7 +355,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'EKA LISMAYATI, SE',
-                    'nip' => '19831115 200902 2 004',
+                    'nip' => '198311152009022004',
                     'jabatan' => 'Bendahara',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -366,7 +366,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'VERA PRAMANITA, SE',
-                    'nip' => '19840319 201503 2 003',
+                    'nip' => '198403192015032003',
                     'jabatan' => 'Analis Laporan Realisasi Anggaran',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -377,7 +377,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'YOVI MULYANA, SE, M.Si',
-                    'nip' => '19861207 201503 1 003',
+                    'nip' => '198612072015031003',
                     'jabatan' => 'Analis Kebijakan Klasifikasi Barang',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -388,7 +388,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'IIS PITRI ANADEWI, SE, M.M',
-                    'nip' => '19860924 201101 2 003',
+                    'nip' => '198609242011012003',
                     'jabatan' => 'Penata Keuangan',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -399,7 +399,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'ASRI DAMAYANTI, S.IP',
-                    'nip' => '19790510 200701 2 011',
+                    'nip' => '197905102007012011',
                     'jabatan' => 'Penata Keuangan',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -410,7 +410,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'DERRY TAUPIQ, A.Md',
-                    'nip' => '19821005 200902 1 003',
+                    'nip' => '198210052009021003',
                     'jabatan' => 'Analis Aset Daerah',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -421,7 +421,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'AGUS KURNIAWAN, S.IP',
-                    'nip' => '19710902 200312 1 006',
+                    'nip' => '197109022003121006',
                     'jabatan' => 'Penyusun Rencana Kebutuhan Rumah Tangga dan Perlengkapan',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -432,7 +432,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'REDI CAHYADI, ST, M.M',
-                    'nip' => '19860729 201101 1 002',
+                    'nip' => '198607292011011002',
                     'jabatan' => 'Penata Keuangan',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -443,7 +443,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'SHINTA FARIDZATUNISA, S. Sos',
-                    'nip' => '19810820 200901 2 006',
+                    'nip' => '198108202009012006',
                     'jabatan' => 'Analis Keuangan',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -454,7 +454,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'INDA RIZQI FARHANI, A.Md',
-                    'nip' => '19890628 201101 2 003',
+                    'nip' => '198906282011012003',
                     'jabatan' => 'Bendahara',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -465,7 +465,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'IRMA SURYANI, S.IP',
-                    'nip' => '19791110 200901 2 008',
+                    'nip' => '197911102009012008',
                     'jabatan' => 'Analis Pengembangan SDM Aparatur',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -476,7 +476,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'FEBI SATRIANA, SE, M.Si',
-                    'nip' => '19860215 201001 1 002',
+                    'nip' => '198602152010011002',
                     'jabatan' => 'Verifikator',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -487,7 +487,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'KIKI WAHYUNI, S.IP',
-                    'nip' => '19840612 200901 2 009',
+                    'nip' => '198406122009012009',
                     'jabatan' => 'Analis Standar Harga',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -498,7 +498,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'SUPENO, S.IP',
-                    'nip' => '19770916 201001 1 002',
+                    'nip' => '197709162010011002',
                     'jabatan' => 'Analis Aset Daerah',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -509,7 +509,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'RENI RENITA, S.IP',
-                    'nip' => '19781129 201001 2 001',
+                    'nip' => '197811292010012001',
                     'jabatan' => 'Penata Laporan Keuangan',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -520,7 +520,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'NANO SUSANTO, S.IP',
-                    'nip' => '19840801 201001 1 003',
+                    'nip' => '198408012010011003',
                     'jabatan' => 'Analis Laporan Realisasi Anggaran',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -531,7 +531,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'DIAN MAYASARI, S.IP',
-                    'nip' => '19851005 201001 2 001',
+                    'nip' => '198510052010012001',
                     'jabatan' => 'Analis Perencanaan, Evaluasi dan Pelaporan',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -542,7 +542,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'ASEP RIDWAN, SE',
-                    'nip' => '19851206 201001 1 001',
+                    'nip' => '198512062010011001',
                     'jabatan' => 'Analis Kebijakan Klasifikasi Barang',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -553,7 +553,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'GUGIALANA WAHYU',
-                    'nip' => '19820702 200501 1 005',
+                    'nip' => '198207022005011005',
                     'jabatan' => 'Analis Laporan Realisasi Anggaran',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -564,7 +564,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'INEU NURAENI',
-                    'nip' => '19731115 200701 2 008',
+                    'nip' => '197311152007012008',
                     'jabatan' => 'Analis Penyelesaian Laporan Hasil Pemeriksaan',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -575,7 +575,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'DIDIN BAYANUDDIN',
-                    'nip' => '19730902 200701 1 005',
+                    'nip' => '197309022007011005',
                     'jabatan' => 'Analis Laporan Realisasi Anggaran',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -586,7 +586,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'FILZA RIDWAN ROSHAN, S.Tr.IP',
-                    'nip' => '19971101 202208 1 001',
+                    'nip' => '199711012022081001',
                     'jabatan' => 'Sekretaris',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -597,7 +597,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'ANGGA PRAMADITA, A.Md',
-                    'nip' => '19820308 201503 1 001',
+                    'nip' => '198203082015031001',
                     'jabatan' => 'Arsiparis Terampil',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -608,7 +608,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'DIAN NUGRAHA, A.Md',
-                    'nip' => '19840602 201503 1 001',
+                    'nip' => '198406022015031001',
                     'jabatan' => 'Arsiparis Terampil',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -619,7 +619,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'RIZKI HIKMAWAN, A.Md',
-                    'nip' => '19920226 201903 1 004',
+                    'nip' => '199202262019031004',
                     'jabatan' => 'Pranata Komputer Pelaksana',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -630,7 +630,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'YUDI DWI PERMADI',
-                    'nip' => '19740314 201212 1 001',
+                    'nip' => '197403142012121001',
                     'jabatan' => 'Pengolah Data Kebijakan Klasifikasi Barang',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -641,7 +641,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'WAHYU YOGA PAMUNGKAS, A.Md, Ak',
-                    'nip' => '20000516 202408 1 001',
+                    'nip' => '200005162024081001',
                     'jabatan' => 'Pengolah Data dan Informasi',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -652,7 +652,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'EGITA ANNISSAA ARDIANA, A.Md, AK',
-                    'nip' => '20011218 202408 2 001',
+                    'nip' => '200112182024082001',
                     'jabatan' => 'Pengolah Data dan Informasi',
                     'nomor_hp' => null,
                     'status' => 'aktif',
@@ -663,7 +663,7 @@ return new class extends Migration
                 [
                     'role' => 'Staf',
                     'nama' => 'ADI ABDUL GANI, S.Kom',
-                    'nip' => '19911126 202321 1 017',
+                    'nip' => '199111262023211017',
                     'jabatan' => 'Pranata Komputer',
                     'nomor_hp' => null,
                     'status' => 'aktif',
