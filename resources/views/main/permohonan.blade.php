@@ -69,7 +69,117 @@
                             <td>{{ $val->no_surat }}</td>
                             <td>{{ $val->perihal }}</td>
                             <td>{{ $val->pemohon }}</td>
-                            <td>{{ $val->verifikator1 }}</td>
+                            @if ($val->status == 0) 
+                                @if ($val->verifikator1)
+                                <td>
+                                    <select name="verifikator4" class="form-control" onclick="event.stopPropagation();">
+                                        <option disabled selected>{{ $val->verifikator1 }} (Verifikator 1)</option> 
+                                    </select>
+                                </td> 
+                                @else
+                                <td>
+                                    <select name="verifikator4" class="form-control" onclick="event.stopPropagation();"> 
+                                        <option disabled selected>-</option> 
+                                    </select>
+                                </td> 
+                                @endif
+                            @elseif ($val->status == 1)
+                                @if ($val->verifikator2)
+                                <td>
+                                    <select name="verifikator4" class="form-control" onclick="event.stopPropagation();">
+                                        <option disabled>{{ $val->verifikator1 }} (Verifikator 1)</option>
+                                        <option disabled selected>{{ $val->verifikator2 }} (Verifikator 2)</option> 
+                                    </select>
+                                </td> 
+                                @else
+                                <td>
+                                    <select name="verifikator4" class="form-control" onclick="event.stopPropagation();">
+                                        <option disabled selected>{{ $val->verifikator1 }} (Verifikator 1)</option> 
+                                    </select>
+                                </td> 
+                                @endif
+                            @elseif ($val->status == 2)
+                                @if ($val->verifikator3)
+                                <td>
+                                    <select name="verifikator4" class="form-control" onclick="event.stopPropagation();">
+                                        <option disabled>{{ $val->verifikator1 }} (Verifikator 1)</option>
+                                        <option disabled>{{ $val->verifikator2 }} (Verifikator 2)</option>
+                                        <option disabled selected>{{ $val->verifikator3 }} (Verifikator 3)</option> 
+                                    </select>
+                                </td> 
+                                @else
+                                <td>
+                                    <select name="verifikator4" class="form-control" onclick="event.stopPropagation();">
+                                        <option disabled>{{ $val->verifikator1 }}</option>
+                                        <option disabled selected>{{ $val->verifikator2 }}</option> 
+                                    </select>
+                                </td> 
+                                @endif
+                            @elseif ($val->status == 3)
+                                @if ($val->verifikator4)
+                                <td>
+                                    <select name="verifikator4" class="form-control" onclick="event.stopPropagation();">
+                                        <option disabled>{{ $val->verifikator1 }} (Verifikator 1)</option>
+                                        <option disabled>{{ $val->verifikator2 }} (Verifikator 2)</option>
+                                        <option disabled>{{ $val->verifikator3 }} (Verifikator 3)</option>
+                                        <option disabled selected>{{ $val->verifikator4 }} (Verifikator 4)</option>
+                                    </select>
+                                </td> 
+                                @else
+                                <td>
+                                    <select name="verifikator4" class="form-control" onclick="event.stopPropagation();">
+                                        <option disabled>{{ $val->verifikator1 }} (Verifikator 1)</option>
+                                        <option disabled>{{ $val->verifikator2 }} (Verifikator 2)</option>
+                                        <option disabled selected>{{ $val->verifikator3 }} (Verifikator 3)</option> 
+                                    </select>
+                                </td> 
+                                @endif
+                            @elseif ($val->status == -1)
+                                @if ($val->verifikator4)
+                                <td>
+                                    <select name="verifikator4" class="form-control" onclick="event.stopPropagation();">
+                                        <option disabled>{{ $val->verifikator1 }} (Verifikator 1)</option>
+                                        <option disabled>{{ $val->verifikator2 }} (Verifikator 2)</option>
+                                        <option disabled>{{ $val->verifikator3 }} (Verifikator 3)</option>
+                                        <option disabled selected>{{ $val->verifikator4 }} (Verifikator 4)</option>
+                                    </select>
+                                </td>  
+                                @elseif ($val->verifikator3)
+                                <td>
+                                    <select name="verifikator4" class="form-control" onclick="event.stopPropagation();">
+                                        <option disabled>{{ $val->verifikator1 }} (Verifikator 1)</option>
+                                        <option disabled>{{ $val->verifikator2 }} (Verifikator 2)</option>
+                                        <option disabled selected>{{ $val->verifikator3 }} (Verifikator 3)</option> 
+                                    </select>
+                                </td>  
+                                @elseif ($val->verifikator2)
+                                <td>
+                                    <select name="verifikator4" class="form-control" onclick="event.stopPropagation();">
+                                        <option disabled>{{ $val->verifikator1 }} (Verifikator 1)</option> 
+                                        <option disabled selected>{{ $val->verifikator2 }} (Verifikator 2)</option> 
+                                    </select>
+                                </td>  
+                                @elseif ($val->verifikator1)
+                                <td>
+                                    <select name="verifikator4" class="form-control" onclick="event.stopPropagation();"> 
+                                        <option disabled selected>{{ $val->verifikator1 }} (Verifikator 1)</option> 
+                                    </select>
+                                </td>  
+                                @else
+                                <td>
+                                    <select name="verifikator4" class="form-control" onclick="event.stopPropagation();"> 
+                                        <option disabled selected>-</option> 
+                                    </select>
+                                </td>  
+                                @endif
+                            @else
+                                <td>
+                                    <select name="verifikator4" class="form-control" onclick="event.stopPropagation();"> 
+                                        <option disabled selected>-</option> 
+                                    </select>
+                                </td> 
+                            @endif
+
                             <td>{{ $val->penandatangan }}</td> 
                             @if($val->status == -1)
                                 <td>

@@ -21,6 +21,18 @@ class CommonController extends Controller
         return view('main.suratmasuk', compact(
             'datas1'
         ));
+    }      
+
+    public function suratmasuk_create(){ 
+        return view('main.suratmasukcreate');
+    }   
+
+    public function suratmasuk_create_upload(){ 
+        
+        $model1 = new Suratmasuk();
+        $model1->save();
+
+        return redirect('/suratmasuk');
     }   
 
     // PERMOHONAN
@@ -182,6 +194,8 @@ class CommonController extends Controller
 
         return redirect('/permohonan');
     }  
+
+    // Akun
 
     public function akun_index(){
         return view('akun');
