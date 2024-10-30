@@ -54,7 +54,7 @@
                         <th scope="col">No. Surat</th>
                         <th scope="col">Perihal</th>
                         <th scope="col">Pemohon</th>
-                        <th scope="col">Verifikator</th>
+                        <th scope="col">Verifikator/Korektor</th>
                         <th scope="col">Penanda Tanganan</th>
                         <th scope="col">Status</th>
                     </tr>
@@ -69,7 +69,13 @@
                             <td>{{ $val->no_surat }}</td>
                             <td>{{ $val->perihal }}</td>
                             <td>{{ $val->pemohon }}</td>
-                            @if ($val->status == 0) 
+                            @if($val->status_koreksi == 1)
+                                <td>
+                                    <select name="verifikator4" class="form-control" onclick="event.stopPropagation();"> 
+                                        <option disabled selected>{{ $val->pengkoreksi }} (Korektor)</option> 
+                                    </select>
+                                </td>  
+                            @elseif ($val->status == 0) 
                                 @if ($val->verifikator1)
                                 <td>
                                     <select name="verifikator4" class="form-control" onclick="event.stopPropagation();">
@@ -181,31 +187,35 @@
                             @endif
 
                             <td>{{ $val->penandatangan }}</td> 
-                            @if($val->status == -1)
+                            @if($val->status_koreksi == 1)
+                                <td>
+                                    <div class="btn btn-danger">Dikoreksi</div>
+                                </td>  
+                            @elseif($val->status == -1)
                                 <td>
                                     <div class="btn btn-success">Sudah Di TTD</div>
                                 </td>  
                             @elseif($val->status == 0)
                                 @if ($val->verifikator1)
-                                    <td><div class="btn btn-danger">Menunggu Verifikator 1</div></td>  
+                                    <td><div class="btn btn-warning">Menunggu Verifikator 1</div></td>  
                                 @else
                                     <td><div class="btn btn-warning">Menunggu TTD</div></td>   
                                 @endif
                             @elseif($val->status == 1)
                                 @if ($val->verifikator2)
-                                    <td><div class="btn btn-danger">Menunggu Verifikator 2</div></td>  
+                                    <td><div class="btn btn-warning">Menunggu Verifikator 2</div></td>  
                                 @else
                                     <td><div class="btn btn-warning">Menunggu TTD</div></td>   
                                 @endif 
                             @elseif($val->status == 2)
                                 @if ($val->verifikator3)
-                                    <td><div class="btn btn-danger">Menunggu Verifikator 3</div></td>  
+                                    <td><div class="btn btn-warning">Menunggu Verifikator 3</div></td>  
                                 @else
                                     <td><div class="btn btn-warning">Menunggu TTD</div></td>   
                                 @endif 
                             @elseif($val->status == 3)
                                 @if ($val->verifikator4)
-                                    <td><div class="btn btn-danger">Menunggu Verifikator 4</div></td>  
+                                    <td><div class="btn btn-warning">Menunggu Verifikator 4</div></td>  
                                 @else
                                     <td><div class="btn btn-warning">Menunggu TTD</div></td>   
                                 @endif 

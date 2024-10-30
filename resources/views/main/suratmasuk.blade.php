@@ -25,6 +25,7 @@
                 <thead>
                     <tr>
                         <th scope="col">No</th>
+                        <th scope="col">No. Surat</th> 
                         <th scope="col">Perihal</th> 
                         <th scope="col">Pengirim</th>  
                         <th scope="col">Diteruskan</th>
@@ -36,10 +37,11 @@
                         $i = 1
                     @endphp
                     @foreach($datas1 as $key=>$val) 
-                        <tr class="hover1" onclick="window.location.href='{{ url("/permohonan/data/$val->id") }}'" style="cursor: pointer;">
+                        <tr class="hover1" onclick="window.location.href='{{ url("/suratmasuk/data/$val->id") }}'" style="cursor: pointer;">
                             <td>{{ $i++ }}</td>
-                            <td>{{ $val->Perihal }}</td>
-                            <td>{{ $val->Pengirim }}</td> 
+                            <td>{{ $val->no_surat }}</td>
+                            <td>{{ $val->perihal }}</td>
+                            <td>{{ $val->pengirim }}</td> 
                             @if($val->status_diteruskan == 0)
                             <td>
                                 <div class="btn btn-primary">Belum</div>

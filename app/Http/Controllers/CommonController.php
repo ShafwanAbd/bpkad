@@ -22,31 +22,46 @@ class CommonController extends Controller
             'datas1'
         ));
     }      
+    public function suratmasuk_detail(String $id){
+        $datas1 = Suratmasuk::find($id);
+
+        return view('main.suratmasukdetail', compact(
+            'datas1'
+        ));
+    }      
 
     public function suratmasuk_create(){ 
         return view('main.suratmasukcreate');
     }   
 
-    public function suratmasuk_create_upload(Request $request){  
+    public function suratmasuk_create_upload(Request $request){    
 
-        $table->string('perihal');
-        $table->string('no_surat'); 
-        $table->string('informasi_ringkas');   
-        $table->string('pengirim');
-        $table->string('dokumen')->nullable();
-        $table->string('status_diteruskan');
-        $table->string('status_disposisi');
+        if ($request->file('dokumen')) {
+            $file = $request->file('dokumen');
+    
+            // Periksa apakah file yang diunggah adalah PDF
+            if ($file->getClientOriginalExtension() == 'pdf') {
         
-        $model1 = new Suratmasuk();        
-        
-        $model1->perihal = $request->perihal;
-        $model1->perihal = $request->perihal;
-        $model1->perihal = $request->perihal;
-        $model1->perihal = $request->perihal;
-        $model1->perihal = $request->perihal;
-        $model1->perihal = $request->perihal;
+                $model1 = new Suratmasuk();        
+                
+                $model1->perihal = $request->perihal;
+                $model1->no_surat = $request->no_surat;
+                $model1->informasi_ringkas = $request->informasi_ringkas;
+                $model1->pengirim = $request->pengirim;
+                $model1->status_diteruskan = 0;
+                $model1->status_disposisi = 0; 
 
-        $model1->save();
+                // Ubah ekstensi nama file menjadi .pdf
+                $namaFile = "Dokumen" . $model1->id . ".pdf"; 
+                $model1->dokumen = $namaFile;
+                $file->move('dokumen/suratmasuk/', $namaFile);
+
+                $model1->save();   
+            } else {
+                // Jika bukan PDF, Anda bisa mengembalikan pesan error
+                return back()->withErrors(['dokumen' => 'File yang diunggah harus dalam format PDF']);
+            }
+        } 
 
         return redirect('/suratmasuk');
     }   
@@ -107,9 +122,9 @@ class CommonController extends Controller
                 $model1->status = 0;  
 
                 // Ubah ekstensi nama file menjadi .pdf
-                $namaFile = "Dokumen" . $model1->id . ".pdf"; 
+                $namaFile = "permohonan_langsung_" . $model1->id . ".pdf"; 
                 $model1->dokumen = $namaFile;
-                $file->move('dokumen/', $namaFile);
+                $file->move('dokumen/permohonan/', $namaFile);
 
                 $model1->save();   
             } else {
@@ -155,9 +170,9 @@ class CommonController extends Controller
                 $model1->status = 0;  
 
                 // Ubah ekstensi nama file menjadi .pdf
-                $namaFile = "Dokumen" . $model1->id . ".pdf";
+                $namaFile = "permohonan_verifikator_" . $model1->id . ".pdf";
                 $model1->dokumen = $namaFile;
-                $file->move('dokumen/', $namaFile);
+                $file->move('dokumen/permohonan/', $namaFile);
                 
                 $model1->save();   
             } else {
@@ -177,6 +192,62 @@ class CommonController extends Controller
         $model1->save();
 
         return redirect('/permohonan');
+    } 
+
+    public function permohonan_koreksi(Request $request, String $id){ 
+
+        $model1 = Permohonan::find($id);
+
+        $model1->status_koreksi = 1;
+        $model1->pengkoreksi = Auth::user()->nama;
+        $model1->pesan_koreksi = $request->pesan_koreksi;
+        $model1->save();
+
+        return redirect('/permohonan');
+    } 
+
+    public function permohonan_revisi(Request $request, String $id){ 
+        $datas1 = User::whereNotIn('role', ['superadmin', 'admin'])->get();
+        $datas2 = Permohonan::find($id);
+
+        return view('main.permohonanrevisicreate', compact(
+            'datas1', 'datas2'
+        ));
+    } 
+
+    public function permohonan_revisi_upload(Request $request, String $id){ 
+
+        if ($request->file('dokumen')) {
+            $file = $request->file('dokumen');
+    
+            // Periksa apakah file yang diunggah adalah PDF
+            if ($file->getClientOriginalExtension() == 'pdf') {
+
+                $model1 = Permohonan::find($id);
+
+                $model1->status_koreksi = 0;  
+
+                $model1->perihal = $request->perihal;
+                $model1->no_surat = $request->no_surat;
+                $model1->sifat = $request->sifat; 
+                $model1->penandatangan = $request->penandatangan;
+                if ($request->tembusan){ 
+                    $model1->tembusan = implode(', ', $request->tembusan); 
+                } 
+
+                // Ubah ekstensi nama file menjadi .pdf
+                $namaFile = "permohonan_langsung_" . $model1->id . ".pdf"; 
+                $model1->dokumen = $namaFile;
+                $file->move('dokumen/permohonan/', $namaFile);
+
+                $model1->save();   
+                
+                return redirect('/permohonan');
+            } else {
+                // Jika bukan PDF, Anda bisa mengembalikan pesan error
+                return back()->withErrors(['dokumen' => 'File yang diunggah harus dalam format PDF']);
+            }
+        }
     } 
 
     public function permohonan_verifikasi1(String $id){ 

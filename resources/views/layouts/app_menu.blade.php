@@ -41,28 +41,24 @@
                     <a class="{{ request()->is('dashboard') ? 'active' : '' }}" href="{{ url('/dashboard') }}"><img src="#">Dashboard</a> 
                     <a class="{{ request()->is('permohonan') ? 'active' : '' }}" href="{{ url('/permohonan') }}"><img src="#">Permohonan</a>
                     <a class="{{ request()->is('tembusan') ? 'active' : '' }}" href="{{ url('/tembusan') }}"><img src="#">Tembusan</a>
-                    <a class="{{ request()->is('suratmasuk') ? 'active' : '' }}" href="{{ url('/suratmasuk') }}"><img src="#">Surat Masuk</a>
                     <a class="{{ request()->is('suratkeluar') ? 'active' : '' }}" href="{{ url('/suratkeluar') }}"><img src="#">Surat Keluar</a>
                     <a class="{{ request()->is('disposisi') ? 'active' : '' }}" href="{{ url('/disposisi') }}"><img src="#">Disposisi</a> 
                     @elseif (Auth::user()->role == 'Kepala Bidang')       
                     <a class="{{ request()->is('dashboard') ? 'active' : '' }}" href="{{ url('/dashboard') }}"><img src="#">Dashboard</a> 
                     <a class="{{ request()->is('permohonan') ? 'active' : '' }}" href="{{ url('/permohonan') }}"><img src="#">Permohonan</a>
                     <a class="{{ request()->is('tembusan') ? 'active' : '' }}" href="{{ url('/tembusan') }}"><img src="#">Tembusan</a>
-                    <a class="{{ request()->is('suratmasuk') ? 'active' : '' }}" href="{{ url('/suratmasuk') }}"><img src="#">Surat Masuk</a>
                     <a class="{{ request()->is('suratkeluar') ? 'active' : '' }}" href="{{ url('/suratkeluar') }}"><img src="#">Surat Keluar</a>
                     <a class="{{ request()->is('disposisi') ? 'active' : '' }}" href="{{ url('/disposisi') }}"><img src="#">Disposisi</a> 
                     @elseif (Auth::user()->role == 'Kepala Sub Bidang')       
                     <a class="{{ request()->is('dashboard') ? 'active' : '' }}" href="{{ url('/dashboard') }}"><img src="#">Dashboard</a> 
                     <a class="{{ request()->is('permohonan') ? 'active' : '' }}" href="{{ url('/permohonan') }}"><img src="#">Permohonan</a>
                     <a class="{{ request()->is('tembusan') ? 'active' : '' }}" href="{{ url('/tembusan') }}"><img src="#">Tembusan</a>
-                    <a class="{{ request()->is('suratmasuk') ? 'active' : '' }}" href="{{ url('/suratmasuk') }}"><img src="#">Surat Masuk</a>
                     <a class="{{ request()->is('suratkeluar') ? 'active' : '' }}" href="{{ url('/suratkeluar') }}"><img src="#">Surat Keluar</a>
                     <a class="{{ request()->is('disposisi') ? 'active' : '' }}" href="{{ url('/disposisi') }}"><img src="#">Disposisi</a>  
                     @elseif (Auth::user()->role == 'Staf')       
                     <a class="{{ request()->is('dashboard') ? 'active' : '' }}" href="{{ url('/dashboard') }}"><img src="#">Dashboard</a> 
                     <a class="{{ request()->is('permohonan') ? 'active' : '' }}" href="{{ url('/permohonan') }}"><img src="#">Permohonan</a>
                     <a class="{{ request()->is('tembusan') ? 'active' : '' }}" href="{{ url('/tembusan') }}"><img src="#">Tembusan</a>
-                    <a class="{{ request()->is('suratmasuk') ? 'active' : '' }}" href="{{ url('/suratmasuk') }}"><img src="#">Surat Masuk</a>
                     <a class="{{ request()->is('suratkeluar') ? 'active' : '' }}" href="{{ url('/suratkeluar') }}"><img src="#">Surat Keluar</a>
                     <a class="{{ request()->is('disposisi') ? 'active' : '' }}" href="{{ url('/disposisi') }}"><img src="#">Disposisi</a>  
                     @endif

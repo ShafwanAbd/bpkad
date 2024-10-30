@@ -10,17 +10,17 @@
         <div class="container shadow"> 
 
             
-            <form method="POST" action="{{ url('/permohonan/createlangsung') }}" enctype="multipart/form-data"> 
+            <form method="POST" action="{{ url('permohonan/revisi/create/'.$datas2->id) }}" enctype="multipart/form-data"> 
                 @csrf
                 <div class="text-align-center py-4">
-                    <h2>Pengajuan Permohonan</h2>
+                    <h2>Pengajuan Revisi Permohonan</h2>
                 </div>
                 
                 <div class="row mb-3">
                     <label for="name" class="col-md-4 col-form-label text-md-end">Perihal</label>
 
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control" name="perihal" required autofocus>
+                        <input id="name" type="text" class="form-control" name="perihal" value="{{ $datas2->perihal }}" required autofocus>
                     </div>
                 </div>
 
@@ -28,7 +28,7 @@
                     <label for="name" class="col-md-4 col-form-label text-md-end">No. Surat</label>
 
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control" name="no_surat" required  autofocus>
+                        <input id="name" type="text" class="form-control" name="no_surat" value="{{ $datas2->no_surat }}" required  autofocus>
                     </div>
                 </div>
 
@@ -37,9 +37,9 @@
 
                     <div class="col-md-6">
                         <select id="sifat" class="form-control" name="sifat" required> 
-                            <option value="Biasa">Biasa</option>
-                            <option value="Penting">Penting</option>
-                            <option value="Rahasia">Rahasia</option>
+                            <option value="Biasa" {{ $datas2->sifat == 'Biasa' ? 'selected' : '' }}>Biasa</option>
+                            <option value="Penting" {{ $datas2->sifat == 'Penting' ? 'selected' : '' }}>Penting</option>
+                            <option value="Rahasia" {{ $datas2->sifat == 'Rahasia' ? 'selected' : '' }}>Rahasia</option>
                         </select>
                     </div>
                 </div> 
@@ -51,7 +51,7 @@
                         <select id="penandatangan" class="form-control select2" name="penandatangan" required>
                             <option disabled selected></option>
                             @foreach($datas1 as $key => $val)
-                                <option value="{{ $val->nama }}">{{ $val->nama }} ({{ $val->role }} {{ $val->jabatan }})</option>
+                                <option value="{{ $val->nama }}" {{ $datas2->penandatangan == $val->nama ? 'selected' : '' }}>{{ $val->nama }} ({{ $val->role }} {{ $val->jabatan }})</option>
                             @endforeach
                         </select>
                     </div>
@@ -64,16 +64,18 @@
                             allowClear: true
                         });
                     });
-                </script>
+                </script> 
 
                 <div class="row mb-3">
                     <label for="tembusan" class="col-md-4 col-form-label text-md-end">Tembusan</label>
 
                     <div class="col-md-6">
-                        <select id="tembusan" class="form-control select2" name="tembusan[]" multiple="multiple">
-                            @foreach($datas1 as $key => $val)
-                                <option value="{{ $val->nama }}">{{ $val->nama }} ({{ $val->role }} {{ $val->jabatan }})</option>
+                        <select id="tembusan" class="form-control select2" name="tembusan[]" multiple="multiple"> 
+
+                            @foreach($datas1 as $val)
+                                <option value="{{ $val->nama }}" >{{ $val->nama }} ({{ $val->role }} {{ $val->jabatan }})</option>
                             @endforeach
+
                         </select>
                     </div>
                 </div>
@@ -86,6 +88,7 @@
                         });
                     });
                 </script>
+
 
                 <div class="row mb-3">
                     <label for="name" class="col-md-4 col-form-label text-md-end">Dokumen</label>

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('permohonan', function (Blueprint $table) {
             $table->id();
-            $table->string('perihal')->nullable();
+            $table->string('perihal');
             $table->string('no_surat');
             $table->string('sifat');
             $table->string('nota_pengantar')->nullable();
@@ -22,6 +22,9 @@ return new class extends Migration
             $table->string('verifikator3')->nullable();
             $table->string('verifikator4')->nullable();
             $table->string('penandatangan');
+            $table->string('pengkoreksi')->nullable();
+            $table->string('status_koreksi')->nullable();
+            $table->string('pesan_koreksi')->nullable();
             $table->string('tembusan')->nullable();
             $table->string('pemohon');
             $table->string('dokumen')->nullable();
