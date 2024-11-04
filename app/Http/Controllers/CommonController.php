@@ -13,8 +13,15 @@ use Illuminate\Http\Request;
 
 class CommonController extends Controller
 {
-    public function dashboard_index(){
-        return view('main.dashboard');
+    public function dashboard_index(){ 
+        $permohonan = Permohonan::all()->count();
+        $tembusan = Tembusan::all()->count();
+        $suratmasuk = Suratmasuk::all()->count(); 
+        $disposisi = disposisi::all()->count(); 
+
+        return view('main.dashboard', compact(
+            'permohonan', 'tembusan', 'suratmasuk', 'disposisi'
+        ));
     } 
 
     // SURAT MASUK
