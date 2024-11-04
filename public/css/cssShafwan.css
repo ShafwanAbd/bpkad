@@ -6,6 +6,10 @@
     text-align: center;
 }
 
+.font-weight-bold {
+    font-weight: bold;
+}
+
 .active {
     background-color: #EBEBEB;
 }
@@ -17,6 +21,10 @@
     width: 100%;
     min-height: 90vh;
     gap: 1.75vw;
+}
+
+.hidden {
+    display: none;
 }
 
 .main_side_menu a {
@@ -199,7 +207,7 @@ tr .hover1 {
     background-color: white;
     margin-bottom: 2.5vh;
     width: 100%;
-    height: 40vh;
+    min-height: 40vh;
     border-radius: 10px;
 }
 
@@ -234,4 +242,14 @@ tr .hover1 {
 .permohonan_detail .container_image img {
     height: 100%;
     width: 100%;
+}
+
+/* AKUN */
+
+.container_akun .container {
+    background-color: white;
+    margin-bottom: 2.5vh;
+    padding: 3vh 2vw;
+    width: 100%; 
+    border-radius: 10px;
 }

@@ -44,21 +44,21 @@
                             <td>{{ $val->pengirim }}</td> 
                             @if($val->status_diteruskan == 0)
                             <td>
-                                <div class="btn btn-primary">Belum</div>
+                                <div class="btn btn-warning">Belum</div>
                             </td>  
                             @elseif($val->status == 1)
                             <td>
-                                <div class="btn btn-primary">Sudah</div>
+                                <div class="btn btn-success">Sudah</div>
                             </td>  
                             @endif
 
                             @if($val->status_disposisi == 0)
                             <td>
-                                <div class="btn btn-primary">Belum</div>
+                                <div class="btn btn-warning">Belum</div>
                             </td>  
                             @elseif($val->status_disposisi == 1)
                             <td>
-                                <div class="btn btn-primary">Sudah</div>
+                                <div class="btn btn-success">Sudah</div>
                             </td>  
                             @endif
                         </tr>
