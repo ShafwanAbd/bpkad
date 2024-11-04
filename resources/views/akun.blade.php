@@ -6,33 +6,42 @@
 
     <div class="dashboard_main main_side_menu">
         <div class="container shadow">
-            <div class="flex"> 
-                <p class="px-2 btn btn-primary">{{Auth::user()->role}}</p>
+
+            <div class="py-1"> 
+                <h4>Akun</h4>
             </div>
-            <div class="flex">
-                <p>Nama: </p>
-                <p class="px-2">{{Auth::user()->nama}}</p>
-            </div>
-            <div class="flex">
-                <p>NIP: </p>
-                <p class="px-2">{{Auth::user()->nip}}</p>
-            </div>
-            <div class="flex">
-                <p>Jabatan: </p>
-                <p class="px-2">{{Auth::user()->jabatan}}</p>
-            </div> 
-            <div class="flex">
-                <p>Nomor HP: </p>
-                <p class="px-2">{{Auth::user()->nomor_hp}}</p>
-            </div> 
-            <div class="flex">
-                <p>Status: </p>
-                <p class="px-2">{{Auth::user()->status}}</p>
-            </div> 
-            <div class="flex">
-                <p>Email: </p>
-                <p class="px-2">{{Auth::user()->email}}</p>
-            </div>  
+
+            <table class="table-auto w-full border-collapse">
+                <tr>
+                    <td class="px-4 py-2 font-bold">Role</td>
+                    <td class="px-4 py-2">: {{ Auth::user()->role }}</td>
+                </tr>
+                <tr>
+                    <td class="px-4 py-2 font-bold">Nama</td>
+                    <td class="px-4 py-2">: {{ Auth::user()->nama }}</td>
+                </tr>
+                <tr>
+                    <td class="px-4 py-2 font-bold">NIP</td>
+                    <td class="px-4 py-2">: {{ Auth::user()->nip }}</td>
+                </tr>
+                <tr>
+                    <td class="px-4 py-2 font-bold">Jabatan</td>
+                    <td class="px-4 py-2">: {{ Auth::user()->jabatan ? Auth::user()->jabatan : '-' }}</td>
+                </tr>
+                <tr>
+                    <td class="px-4 py-2 font-bold">Nomor HP</td>
+                    <td class="px-4 py-2">: {{ Auth::user()->nomor_hp ? Auth::user()->nomor_hp : '-' }}</td>
+                </tr>
+                <tr>
+                    <td class="px-4 py-2 font-bold">Status</td>
+                    <td class="px-4 py-2">: {{ Auth::user()->status ? Auth::user()->status : '-' }}</td>
+                </tr>
+                <tr>
+                    <td class="px-4 py-2 font-bold">Email</td>
+                    <td class="px-4 py-2">: {{ Auth::user()->email ? Auth::user()->email : '-' }}</td>
+                </tr>
+            </table> 
+            
         </div> 
     </div>
 </div>

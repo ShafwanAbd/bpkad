@@ -43,16 +43,22 @@
                         <td>: {{ $datas1->created_at }}</td>
                     </tr>
                     <tr>
-                        <td>Diteruskan</td>  
-                        @if ($datas1->status_diteruskan == 0)
+                        <td>Disposisi</td>
+                        @if ($datas1->status_disposisi == 0)
                         <td>: Belum</td>
                         @else
-                        <td>: Sudah</td>
+                        <td>: 
+
+                        @foreach($datas2 as $key => $val)
+                            {{ $val->tujuan }}@if (!$loop->last), @endif
+                        @endforeach
+
+                        </td>
                         @endif
                     </tr>
                     <tr>
-                        <td>Disposisi</td>
-                        @if ($datas1->status_disposisi == 0)
+                        <td>Diteruskan</td>  
+                        @if ($datas1->status_diteruskan == 0)
                         <td>: Belum</td>
                         @else
                         <td>: Sudah</td>
@@ -67,8 +73,10 @@
 
                 <div class="py-4">
                     @if (Auth::user()->role == 'Kepala Badan')
-                        <a href="{{ url('/permohonan/tandatangan/'.$datas1->id) }}" class="my-2 btn btn-primary">Disposisi</a>
-                        <a href="{{ url('/permohonan/tandatangan/'.$datas1->id) }}" class="my-2 btn btn-primary">Teruskan</a>
+ 
+                        <a href="{{ url('/suratmasuk/createdisposisi/' . $datas1->id) }}" class="btn btn-primary my-2">Disposisi</a>
+                        <a href="{{ url('/suratmasuk/createteruskan/' . $datas1->id) }}" class="btn btn-primary my-2">Teruskan</a>
+    
                     @endif
 
                     <a href="{{ asset('dokumen/suratmasuk/'.$datas1->dokumen) }}" class="my-2 btn btn-primary">Download Surat</a>

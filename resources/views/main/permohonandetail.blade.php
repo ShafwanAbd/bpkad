@@ -69,11 +69,9 @@
                         <td>: {{ $datas1->sifat }}</td>
                     </tr>
                     <tr>
-                        <td>Nota Pengantar</td>
                         @if ($datas1->nota_pengantar)
-                            <td>: {{ $datas1->nota_pengantar }}</td>
-                        @else
-                            <td>: -</td>
+                            <td>Nota Pengantar</td>
+                            <td>: {{ $datas1->nota_pengantar }}</td> 
                         @endif
                     </tr>
                     <tr>

@@ -19,6 +19,7 @@ Route::get('/home', function () {
 // NEED LOGIN ACCESS
 Route::middleware(['auth'])->group(function () {
     // Main
+    Route::get('/', [CommonController::class, 'dashboard_index']);
     Route::get('/dashboard', [CommonController::class, 'dashboard_index']);
     
     Route::get('/permohonan', [CommonController::class, 'permohonan_index']);
@@ -41,20 +42,32 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/penandatanganan', [CommonController::class, 'dashboard_index']);
 
 
-    Route::get('/tembusan', [CommonController::class, 'dashboard_index']);
+    Route::get('/tembusan', [CommonController::class, 'tembusan_index']);
 
 
     Route::get('/suratmasuk', [CommonController::class, 'suratmasuk_index']);
     Route::get('/suratmasuk/create', [CommonController::class, 'suratmasuk_create']);
     Route::post('/suratmasuk/create', [CommonController::class, 'suratmasuk_create_upload']);
     Route::get('/suratmasuk/data/{id}', [CommonController::class, 'suratmasuk_detail']);
-
-    Route::get('/suratkeluar', [CommonController::class, 'dashboard_index']);
-
+ 
     
-    Route::get('/disposisi', [CommonController::class, 'dashboard_index']);
+    Route::get('/disposisi', [CommonController::class, 'disposisi_index']);    
+    Route::get('/disposisi/data/{id}', [CommonController::class, 'disposisi_detail']);
+    Route::get('/suratmasuk/createdisposisi/{id}', [CommonController::class, 'suratmasuk_create_disposisi']);
+    Route::post('/suratmasuk/createdisposisi/{id}', [CommonController::class, 'suratmasuk_create_disposisi_upload']);
+    Route::get('/suratmasuk/createterusan/{id}', [CommonController::class, 'suratmasuk_create_terusan']);
+    Route::get('/suratmasuk/disposisidone/{id}', [CommonController::class, 'suratmasuk_disposisi_done']);
+
+    Route::get('/suratkeluar', [CommonController::class, 'dashboard_index']); 
+
     // General
     Route::get('/akun', [CommonController::class, 'akun_index']);
+    Route::get('/kelolaakun', [CommonController::class, 'kelolaakun_index']);
+    Route::get('/kelolaakun/data/{id}', [CommonController::class, 'kelolaakun_detail']);
+    Route::post('/kelolaakun/data/{id}', [CommonController::class, 'kelolaakun_detail_upload']);
+    Route::get('/kelolaakun/create', [CommonController::class, 'kelolaakun_create']);
+    Route::post('/kelolaakun/create', [CommonController::class, 'kelolaakun_create_upload']);
+    Route::get('/kelolaakun/delete/{id}', [CommonController::class, 'kelolaakun_delete']);
 });
 
 

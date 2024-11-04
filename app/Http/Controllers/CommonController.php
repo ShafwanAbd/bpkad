@@ -5,13 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Permohonan; 
 use App\Models\Suratmasuk; 
+use App\Models\Disposisi; 
+use App\Models\Tembusan; 
+use App\Models\Terusan; 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request; 
 
 class CommonController extends Controller
 {
-    public function dashboard_index(){
-        return view('main.dashboard');
+    public function dashboard_index(){ 
+        $permohonan = Permohonan::all()->count();
+        $tembusan = Tembusan::all()->count();
+        $suratmasuk = Suratmasuk::all()->count(); 
+        $disposisi = disposisi::all()->count(); 
+
+        return view('main.dashboard', compact(
+            'permohonan', 'tembusan', 'suratmasuk', 'disposisi'
+        ));
     } 
 
     // SURAT MASUK
@@ -24,14 +34,24 @@ class CommonController extends Controller
     }      
     public function suratmasuk_detail(String $id){
         $datas1 = Suratmasuk::find($id);
+        $datas2 = Disposisi::whereIn('id_surat', [$id])->get();
 
         return view('main.suratmasukdetail', compact(
-            'datas1'
+            'datas1', 'datas2'
         ));
     }      
 
     public function suratmasuk_create(){ 
         return view('main.suratmasukcreate');
+    }   
+
+    public function suratmasuk_create_terusan(String $id){ 
+        $datas1 = User::whereNotIn('role', ['superadmin', 'admin'])->get();
+        $datas2 = Suratmasuk::find($id);
+
+        return view('main.suratmasukterusancreate', compact(
+            'datas1', 'datas2'
+        ));
     }   
 
     public function suratmasuk_create_upload(Request $request){    
@@ -56,7 +76,7 @@ class CommonController extends Controller
                 $model1->dokumen = $namaFile;
                 $file->move('dokumen/suratmasuk/', $namaFile);
 
-                $model1->save();   
+                $model1->save();    
             } else {
                 // Jika bukan PDF, Anda bisa mengembalikan pesan error
                 return back()->withErrors(['dokumen' => 'File yang diunggah harus dalam format PDF']);
@@ -65,6 +85,67 @@ class CommonController extends Controller
 
         return redirect('/suratmasuk');
     }   
+
+    // DISPOSISI
+
+    
+    public function disposisi_index() {
+        $user_name = Auth::user()->nama;
+        $datas1 = Disposisi::where('tujuan', 'like', '%' . $user_name . '%')->get();
+    
+        return view('main.disposisi', compact('datas1'));
+    }
+      
+
+    
+    public function disposisi_detail(String $id){
+        $datas1 = Disposisi::find($id);
+        $datas2 = Suratmasuk::find($datas1->id_surat);
+
+        return view('main.disposisidetail', compact(
+            'datas1', 'datas2'
+        ));
+    }      
+
+    public function suratmasuk_create_disposisi(String $id){ 
+        $datas1 = User::whereNotIn('role', ['superadmin', 'admin'])->get();
+        $datas2 = Suratmasuk::find($id);
+
+        return view('main.suratmasukdisposisicreate', compact(
+            'datas1', 'datas2'
+        ));
+    }   
+
+    public function suratmasuk_create_disposisi_upload(Request $request, String $id){
+
+        $model1 = new Disposisi();
+ 
+        $model1->tujuan = implode(',', $request->tujuan);
+        $model1->catatan = $request->catatan;
+        $model1->perintah = implode(',' ,$request->perintah);
+        $model1->sifat = $request->sifat;
+        $model1->id_surat = $id;
+        $model1->status = 0;
+        $model1->pembuat = Auth::user()->nama; 
+
+        $model1->save();
+
+        $model2 = Suratmasuk::find($id);
+
+        $model2->status_disposisi = 1;
+
+        $model2->save();
+
+        return redirect('/suratmasuk');
+    }
+
+    public function suratmasuk_disposisi_done(String $id){
+        $model1 = Disposisi::find($id);
+        $model1->status = 1;
+        $model1->save();
+
+        return redirect('/disposisi');
+    }
 
     // PERMOHONAN
 
@@ -126,7 +207,17 @@ class CommonController extends Controller
                 $model1->dokumen = $namaFile;
                 $file->move('dokumen/permohonan/', $namaFile);
 
-                $model1->save();   
+                $model1->save();    
+
+                // Get user IDs for each tembusan name
+                $userIds = User::whereIn('nama', [$model1->tembusan])->pluck('id');
+
+                foreach ($userIds as $userId) {
+                    $model2 = new Tembusan();
+                    $model2->id_user = $userId;
+                    $model2->id_permohonan = $model1->id;
+                    $model2->save();
+                    } 
             } else {
                 // Jika bukan PDF, Anda bisa mengembalikan pesan error
                 return back()->withErrors(['dokumen' => 'File yang diunggah harus dalam format PDF']);
@@ -174,7 +265,15 @@ class CommonController extends Controller
                 $model1->dokumen = $namaFile;
                 $file->move('dokumen/permohonan/', $namaFile);
                 
-                $model1->save();   
+                $model1->save();     
+
+                $userIds = User::whereIn('nama', [$model1->tembusan])->pluck('id');
+                foreach ($userIds as $userId) {
+                    $model2 = new Tembusan();
+                    $model2->id_user = $userId;
+                    $model2->id_permohonan = $model1->id;
+                    $model2->save();
+                } 
             } else {
                 // Jika bukan PDF, Anda bisa mengembalikan pesan error
                 return back()->withErrors(['dokumen' => 'File yang diunggah harus dalam format PDF']);
@@ -290,9 +389,90 @@ class CommonController extends Controller
         return redirect('/permohonan');
     }  
 
+    // Tembusan
+
+    public function tembusan_index(){ 
+        // $datas1 = Disposisi::where('tujuan', 'like', '%' . $user_name . '%')->get();
+        $datas1 = Tembusan::where('id_user', Auth::user()->id)->get();     
+
+        return view('main.tembusan', compact(
+            'datas1'
+        ));
+    }   
+
     // Akun
 
     public function akun_index(){
         return view('akun');
+    }
+
+    public function kelolaakun_index(){
+        $datas1 = User::all();
+
+        return view('kelolaakun', compact(
+            'datas1'
+        ));
+    }
+
+    public function kelolaakun_create(){
+
+        return view('kelolaakuncreate');
+    }
+
+    public function kelolaakun_create_upload(Request $request){ 
+
+        $model1 = new User();
+
+        $model1->role = $request->role;
+        $model1->nama = $request->nama;
+        $model1->nip = $request->nip;
+        $model1->jabatan = $request->jabatan;
+        $model1->nomor_hp = $request->nomor_hp;
+        $model1->status = $request->status;
+        $model1->email = $request->email;
+        $model1->password = bcrypt($request->password); 
+
+        $model1->save();
+
+        return redirect('/kelolaakun');
+    }
+
+    public function kelolaakun_detail(String $id){
+        $datas1 = User::find($id);
+
+        return view('kelolaakundetail', compact(
+            'datas1'
+        ));
+    }
+
+    public function kelolaakun_detail_upload(String $id, Request $request){ 
+
+        $model1 = User::find($id);
+
+        $model1->role = $request->role;
+        $model1->nama = $request->nama;
+        $model1->nip = $request->nip;
+        $model1->jabatan = $request->jabatan;
+        $model1->nomor_hp = $request->nomor_hp;
+        $model1->status = $request->status;
+        $model1->email = $request->email;
+        
+        // Only update the password if it was provided
+        if ($request->filled('password')) {
+            $model1->password = bcrypt($request->password);
+        }
+
+        $model1->save();
+
+        return redirect('/kelolaakun');
+    }
+
+    public function kelolaakun_delete(String $id){ 
+
+        $model1 = User::find($id);
+
+        $model1->delete();
+
+        return redirect('/kelolaakun');
     }
 }
