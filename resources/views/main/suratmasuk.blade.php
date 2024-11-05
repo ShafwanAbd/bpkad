@@ -28,7 +28,6 @@
                         <th scope="col">No. Surat</th> 
                         <th scope="col">Perihal</th> 
                         <th scope="col">Pengirim</th>  
-                        <th scope="col">Diteruskan</th>
                         <th scope="col">Disposisi</th>
                     </tr>
                 </thead>
@@ -42,15 +41,6 @@
                             <td>{{ $val->no_surat }}</td>
                             <td>{{ $val->perihal }}</td>
                             <td>{{ $val->pengirim }}</td> 
-                            @if($val->status_diteruskan == 0)
-                            <td>
-                                <div class="btn btn-warning">Belum</div>
-                            </td>  
-                            @elseif($val->status == 1)
-                            <td>
-                                <div class="btn btn-success">Sudah</div>
-                            </td>  
-                            @endif
 
                             @if($val->status_disposisi == 0)
                             <td>

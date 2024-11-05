@@ -8,7 +8,7 @@
     <div class="permohonan_main main_side_menu permohonan_detail">
         <div class="container shadow">
             <div class="inner_container p-5">
-            <h3 class="text-align-center py-1">Surat Masuk Detail</h3>
+            <h3 class="text-align-center py-1">Tembusan Detail</h3>
                 <table class="detail-table">
                     <tr>
                         <td>Perihal</td>
@@ -41,21 +41,7 @@
                     <tr>
                         <td>Dibuat Pada</td>
                         <td>: {{ $datas1->created_at }}</td>
-                    </tr>
-                    <tr>
-                        <td>Disposisi</td>
-                        @if ($datas1->status_disposisi == 0)
-                        <td>: Belum</td>
-                        @else
-                        <td>: 
-
-                        @foreach($datas2 as $key => $val)
-                            {{ $val->tujuan }}@if (!$loop->last), @endif
-                        @endforeach
-
-                        </td>
-                        @endif
-                    </tr>
+                    </tr> 
                 </table>
 
                 <!-- <div class="container_image mt-4">
@@ -63,12 +49,7 @@
                     <a href="#" class="my-2 btn btn-primary">Detail</a>
                 </div> -->
 
-                <div class="py-4">
-                    @if (Auth::user()->role == 'Kepala Badan')
- 
-                        <a href="{{ url('/suratmasuk/createdisposisi/' . $datas1->id) }}" class="btn btn-primary my-2">Disposisi</a>
-    
-                    @endif
+                <div class="py-4"> 
 
                     <a href="{{ asset('dokumen/suratmasuk/'.$datas1->dokumen) }}" class="my-2 btn btn-primary">Download Surat</a>
 

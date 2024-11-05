@@ -17,10 +17,22 @@
                 </div>
                 
                 <div class="row mb-3">
+                    <label for="tipe_surat" class="col-md-4 col-form-label text-md-end">Tipe Surat</label>
+
+                    <div class="col-md-6">
+                        <select id="tipe_surat" class="form-control" name="tipe_surat" required> 
+                            <option selected disabled>-- Pilih --</option>
+                            <option value="Disposisi">Disposisi</option>
+                            <option value="Tembusan">Tembusan</option> 
+                        </select>
+                    </div>
+                </div> 
+                
+                <div class="row mb-3">
                     <label for="name" class="col-md-4 col-form-label text-md-end">Perihal</label>
 
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control" name="perihal" required autofocus>
+                        <input id="name" type="text" class="form-control" name="perihal" required>
                     </div>
                 </div>
 

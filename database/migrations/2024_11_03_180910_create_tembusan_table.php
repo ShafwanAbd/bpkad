@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('tembusan', function (Blueprint $table) {
             $table->id();
-            $table->string('id_user');
-            $table->string('id_permohonan');
+            $table->string('perihal');
+            $table->string('no_surat'); 
+            $table->string('informasi_ringkas');   
+            $table->string('pengirim');
+            $table->string('dokumen')->nullable(); 
             $table->timestamps();
         });
     }

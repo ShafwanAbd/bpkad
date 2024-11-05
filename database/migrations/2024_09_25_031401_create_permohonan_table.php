@@ -25,7 +25,6 @@ return new class extends Migration
             $table->string('pengkoreksi')->nullable();
             $table->string('status_koreksi')->nullable();
             $table->string('pesan_koreksi')->nullable();
-            $table->string('tembusan')->nullable();
             $table->string('pemohon');
             $table->string('dokumen')->nullable();
             $table->string('status');

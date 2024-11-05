@@ -162,27 +162,6 @@
                 </script>
 
                 <div class="row mb-3">
-                    <label for="tembusan" class="col-md-4 col-form-label text-md-end">Tembusan</label>
-
-                    <div class="col-md-6">
-                        <select id="tembusan" class="form-control select2" name="tembusan[]" multiple="multiple">
-                            @foreach($datas1 as $key => $val)
-                                <option value="{{ $val->nama }}">{{ $val->nama }} ({{ $val->role }} {{ $val->jabatan }})</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-                <script>
-                    $(document).ready(function() {
-                        $('#tembusan').select2({
-                            placeholder: "Pilih Tembusan",
-                            allowClear: true
-                        });
-                    });
-                </script>
-
-                <div class="row mb-3">
                     <label for="name" class="col-md-4 col-form-label text-md-end">Dokumen</label>
 
                     <div class="col-md-6">

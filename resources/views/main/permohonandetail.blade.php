@@ -53,14 +53,6 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Tembusan</td>
-                        @if ($datas1->tembusan)
-                            <td>: {{ $datas1->tembusan }}</td>
-                        @else
-                            <td>: -</td>
-                        @endif
-                    </tr>
-                    <tr>
                         <td>Nomor Surat</td>
                         <td>: {{ $datas1->no_surat }}</td>
                     </tr>

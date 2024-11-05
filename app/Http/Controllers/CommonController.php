@@ -61,22 +61,41 @@ class CommonController extends Controller
     
             // Periksa apakah file yang diunggah adalah PDF
             if ($file->getClientOriginalExtension() == 'pdf') {
+
+                if ($request->tipe_surat == 'Disposisi'){
+                    $model1 = new Suratmasuk();        
+                    
+                    $model1->perihal = $request->perihal;
+                    $model1->no_surat = $request->no_surat;
+                    $model1->informasi_ringkas = $request->informasi_ringkas;
+                    $model1->pengirim = $request->pengirim;
+                    $model1->status_disposisi = 0; 
+    
+                    // Ubah ekstensi nama file menjadi .pdf
+                    $namaFile = "Dokumen" . $model1->id . ".pdf"; 
+                    $model1->dokumen = $namaFile;
+                    $file->move('dokumen/suratmasuk/', $namaFile);
+    
+                    $model1->save();    
+                } else if ($request->tipe_surat == 'Tembusan'){
+                    
+                    $model1 = new Tembusan();        
+                    
+                    $model1->perihal = $request->perihal;
+                    $model1->no_surat = $request->no_surat;
+                    $model1->informasi_ringkas = $request->informasi_ringkas;
+                    $model1->pengirim = $request->pengirim;
+    
+                    // Ubah ekstensi nama file menjadi .pdf
+                    $namaFile = "Dokumen" . $model1->id . ".pdf"; 
+                    $model1->dokumen = $namaFile;
+                    $file->move('dokumen/suratmasuk/', $namaFile);
+    
+                    $model1->save();   
+                    
+                    return redirect('/tembusan');
+                }
         
-                $model1 = new Suratmasuk();        
-                
-                $model1->perihal = $request->perihal;
-                $model1->no_surat = $request->no_surat;
-                $model1->informasi_ringkas = $request->informasi_ringkas;
-                $model1->pengirim = $request->pengirim;
-                $model1->status_diteruskan = 0;
-                $model1->status_disposisi = 0; 
-
-                // Ubah ekstensi nama file menjadi .pdf
-                $namaFile = "Dokumen" . $model1->id . ".pdf"; 
-                $model1->dokumen = $namaFile;
-                $file->move('dokumen/suratmasuk/', $namaFile);
-
-                $model1->save();    
             } else {
                 // Jika bukan PDF, Anda bisa mengembalikan pesan error
                 return back()->withErrors(['dokumen' => 'File yang diunggah harus dalam format PDF']);
@@ -85,6 +104,25 @@ class CommonController extends Controller
 
         return redirect('/suratmasuk');
     }   
+     
+    // Tembusan
+
+    public function tembusan_index(){ 
+        // $datas1 = Disposisi::where('tujuan', 'like', '%' . $user_name . '%')->get();
+        $datas1 = Tembusan::all();     
+
+        return view('main.tembusan', compact(
+            'datas1'
+        ));
+    }   
+
+    public function tembusan_detail(String $id){
+        $datas1 = Tembusan::find($id); 
+
+        return view('main.tembusandetail', compact(
+            'datas1'
+        ));
+    }      
 
     // DISPOSISI
 
@@ -196,10 +234,7 @@ class CommonController extends Controller
                 $model1->no_surat = $request->no_surat;
                 $model1->sifat = $request->sifat;
                 $model1->pemohon = Auth::user()->nama;
-                $model1->penandatangan = $request->penandatangan;
-                if ($request->tembusan){ 
-                    $model1->tembusan = implode(', ', $request->tembusan); 
-                }
+                $model1->penandatangan = $request->penandatangan; 
                 $model1->status = 0;  
 
                 // Ubah ekstensi nama file menjadi .pdf
@@ -207,17 +242,7 @@ class CommonController extends Controller
                 $model1->dokumen = $namaFile;
                 $file->move('dokumen/permohonan/', $namaFile);
 
-                $model1->save();    
-
-                // Get user IDs for each tembusan name
-                $userIds = User::whereIn('nama', [$model1->tembusan])->pluck('id');
-
-                foreach ($userIds as $userId) {
-                    $model2 = new Tembusan();
-                    $model2->id_user = $userId;
-                    $model2->id_permohonan = $model1->id;
-                    $model2->save();
-                    } 
+                $model1->save();     
             } else {
                 // Jika bukan PDF, Anda bisa mengembalikan pesan error
                 return back()->withErrors(['dokumen' => 'File yang diunggah harus dalam format PDF']);
@@ -254,10 +279,7 @@ class CommonController extends Controller
                 $model1->verifikator1 = $request->verifikator1;
                 $model1->verifikator2 = $request->verifikator2;
                 $model1->verifikator3 = $request->verifikator3;
-                $model1->verifikator4 = $request->verifikator4;
-                if ($request->tembusan){ 
-                    $model1->tembusan = implode(', ', $request->tembusan); 
-                }
+                $model1->verifikator4 = $request->verifikator4; 
                 $model1->status = 0;  
 
                 // Ubah ekstensi nama file menjadi .pdf
@@ -266,14 +288,6 @@ class CommonController extends Controller
                 $file->move('dokumen/permohonan/', $namaFile);
                 
                 $model1->save();     
-
-                $userIds = User::whereIn('nama', [$model1->tembusan])->pluck('id');
-                foreach ($userIds as $userId) {
-                    $model2 = new Tembusan();
-                    $model2->id_user = $userId;
-                    $model2->id_permohonan = $model1->id;
-                    $model2->save();
-                } 
             } else {
                 // Jika bukan PDF, Anda bisa mengembalikan pesan error
                 return back()->withErrors(['dokumen' => 'File yang diunggah harus dalam format PDF']);
@@ -329,10 +343,7 @@ class CommonController extends Controller
                 $model1->perihal = $request->perihal;
                 $model1->no_surat = $request->no_surat;
                 $model1->sifat = $request->sifat; 
-                $model1->penandatangan = $request->penandatangan;
-                if ($request->tembusan){ 
-                    $model1->tembusan = implode(', ', $request->tembusan); 
-                } 
+                $model1->penandatangan = $request->penandatangan; 
 
                 // Ubah ekstensi nama file menjadi .pdf
                 $namaFile = "permohonan_langsung_" . $model1->id . ".pdf"; 
@@ -388,17 +399,6 @@ class CommonController extends Controller
 
         return redirect('/permohonan');
     }  
-
-    // Tembusan
-
-    public function tembusan_index(){ 
-        // $datas1 = Disposisi::where('tujuan', 'like', '%' . $user_name . '%')->get();
-        $datas1 = Tembusan::where('id_user', Auth::user()->id)->get();     
-
-        return view('main.tembusan', compact(
-            'datas1'
-        ));
-    }   
 
     // Akun
 

@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/tembusan', [CommonController::class, 'tembusan_index']);
+    Route::get('/tembusan/data/{id}', [CommonController::class, 'tembusan_detail']);
 
 
     Route::get('/suratmasuk', [CommonController::class, 'suratmasuk_index']);
