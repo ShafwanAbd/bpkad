@@ -226,9 +226,10 @@
                     @endforeach
                 </tbody>
                 @else
-                    <div class="datakosong wh-100">
-                        <h4>Data Kosong ...</h4>
-                    </div>
+                <div class="datakosong wh-100 text-center">
+                    <img src="{{ asset('image/Empty Data.jpg') }}" alt="Data Kosong" style="width: 200px; margin-top: 20px;">
+                    <h4>Belum ada data permohonan saat ini.</h4>
+                </div>
                 @endif
 
             </table> 

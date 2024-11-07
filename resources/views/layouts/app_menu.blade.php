@@ -12,7 +12,6 @@
                 @else
                 <h2>{{ ucfirst(request()->segment(count(request()->segments()))) }}</h2> 
                 @endif -->
-            <a href="#"><img src="#"></a>
         </div>
         <div class="menu_item btn-group-vertical" role="group" aria-label="Vertical button group">
             @if (Auth::check()) @if (Auth::user()->role == 'Superadmin')
