@@ -22,6 +22,7 @@
                         <th scope="col">No. Surat</th> 
                         <th scope="col">Perihal</th> 
                         <th scope="col">Pengirim</th>   
+                        <th scope="col">Dibuat Pada</th>   
                     </tr>
                 </thead>
                 <tbody>
@@ -34,6 +35,7 @@
                             <td>{{ $val->no_surat }}</td>
                             <td>{{ $val->perihal }}</td>
                             <td>{{ $val->pengirim }}</td>  
+                            <td>{{ $val->created_at }}</td>  
                         </tr>
                     @endforeach
                 </tbody>

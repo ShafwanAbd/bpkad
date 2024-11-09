@@ -11,6 +11,10 @@
             <h3 class="text-align-center py-1">Permohonan Detail</h3>
                 <table class="detail-table">
                     <tr>
+                        <td>Nomor Surat</td>
+                        <td>: {{ $datas1->no_surat }}</td>
+                    </tr>
+                    <tr>
                         <td>Perihal</td>
                         @if ($datas1->perihal)
                             <td>: {{ $datas1->perihal }}</td>
@@ -24,46 +28,6 @@
                             <td>: {{ $datas1->pemohon }}</td>
                         @else
                             <td>: -</td>
-                        @endif
-                    </tr>
-                    <tr>
-                        <td>Penanda Tangan</td>
-                        @if ($datas1->penandatangan)
-                            <td>: {{ $datas1->penandatangan }}</td>
-                        @else
-                            <td>: -</td>
-                        @endif
-                    </tr>
-                    <tr>
-                        <td>Verifikator</td>
-                        @if ($datas1->verifikator1)
-                            <td>: {{ $datas1->verifikator1 }}
-                            @if ($datas1->verifikator2)
-                                {{ $datas1->verifikator2 }}
-                            @endif
-                            @if ($datas1->verifikator3)
-                                , {{ $datas1->verifikator3 }}
-                            @endif
-                            @if ($datas1->verifikator4)
-                                , {{ $datas1->verifikator4 }}
-                            @endif
-                        @else
-                            <td>: -</td>
-                        @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Nomor Surat</td>
-                        <td>: {{ $datas1->no_surat }}</td>
-                    </tr>
-                    <tr>
-                        <td>Sifat</td>
-                        <td>: {{ $datas1->sifat }}</td>
-                    </tr>
-                    <tr>
-                        @if ($datas1->nota_pengantar)
-                            <td>Nota Pengantar</td>
-                            <td>: {{ $datas1->nota_pengantar }}</td> 
                         @endif
                     </tr>
                     <tr>
@@ -100,6 +64,12 @@
                             <td>: Sudah di TTD</td>
                         @endif  
                     </tr>
+                    <tr>
+                        @if ($datas1->nota_pengantar)
+                            <td>Nota Pengantar</td>
+                            <td>: {{ $datas1->nota_pengantar }}</td> 
+                        @endif
+                    </tr>
                     @if ($datas1->status_koreksi == 1)
                     <tr>
                         <td>Pesan Koreksi</td>
@@ -110,6 +80,36 @@
                         @endif
                     </tr>
                     @endif
+                    <tr>
+                        <td>Sifat</td>
+                        <td>: {{ $datas1->sifat }}</td>
+                    </tr>
+                    <tr>
+                        <td>Verifikator</td>
+                        @if ($datas1->verifikator1)
+                            <td>: {{ $datas1->verifikator1 }}
+                            @if ($datas1->verifikator2)
+                                {{ $datas1->verifikator2 }}
+                            @endif
+                            @if ($datas1->verifikator3)
+                                , {{ $datas1->verifikator3 }}
+                            @endif
+                            @if ($datas1->verifikator4)
+                                , {{ $datas1->verifikator4 }}
+                            @endif
+                        @else
+                            <td>: -</td>
+                        @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Penanda Tangan</td>
+                        @if ($datas1->penandatangan)
+                            <td>: {{ $datas1->penandatangan }}</td>
+                        @else
+                            <td>: -</td>
+                        @endif
+                    </tr>
                     <tr>
                         <td>Dibuat Pada</td>
                         <td>: {{ $datas1->created_at }}</td>

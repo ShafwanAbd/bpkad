@@ -10,28 +10,28 @@
         <div class="container shadow"> 
 
             
-            <form method="POST" action="{{ url('/permohonan/createlangsung') }}" enctype="multipart/form-data"> 
+            <form method="POST" action="{{ url('/suratkeluar/create') }}" enctype="multipart/form-data"> 
                 @csrf
                 <div class="text-align-center py-4">
-                    <h2>Pengajuan Permohonan</h2>
+                <h2>Surat Keluar</h2> 
                 </div>
 
                 <div class="row mb-3">
                     <label for="name" class="col-md-4 col-form-label text-md-end">No. Surat</label>
 
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control" name="no_surat" required  autofocus>
+                        <input id="name" type="text" class="form-control" name="no_surat" required>
                     </div>
-                </div>
+                </div>   
                 
                 <div class="row mb-3">
                     <label for="name" class="col-md-4 col-form-label text-md-end">Perihal</label>
 
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control" name="perihal" required autofocus>
+                        <input id="name" type="text" class="form-control" name="perihal" required>
                     </div>
                 </div>
-
+                
                 <div class="row mb-3">
                     <label for="sifat" class="col-md-4 col-form-label text-md-end">Sifat</label>
 
@@ -44,6 +44,56 @@
                     </div>
                 </div> 
 
+                <div class="row mb-3">
+                    <label for="name" class="col-md-4 col-form-label text-md-end">Isi</label>
+
+                    <div class="col-md-6">
+                        <textarea id="name" class="form-control" name="isi" rows="3" required></textarea>
+                    </div> 
+                </div> 
+                  
+                <div class="row mb-3">
+                    <label for="tembusan" class="col-md-4 col-form-label text-md-end">Tembusan</label>
+
+                    <div class="col-md-6">
+                        <select id="tembusan" class="form-control select2" name="tembusan[]" multiple="multiple">
+                            @foreach($datas1 as $key => $val)
+                                <option value="{{ $val->nama }}">{{ $val->nama }} ({{ $val->role }} {{ $val->jabatan }})</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <script>
+                    $(document).ready(function() {
+                        $('#tembusan').select2({
+                            placeholder: "Pilih Tembusan",
+                            allowClear: true
+                        });
+                    });
+                </script>
+                 
+                <div class="row mb-3">
+                    <label for="penerimasurat" class="col-md-4 col-form-label text-md-end">Penerima Surat</label>
+
+                    <div class="col-md-6">
+                        <select id="penerimasurat" class="form-control select2" name="penerimasurat[]" multiple="multiple">
+                            @foreach($datas1 as $key => $val)
+                                <option value="{{ $val->nama }}">{{ $val->nama }} ({{ $val->role }} {{ $val->jabatan }})</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <script>
+                    $(document).ready(function() {
+                        $('#penerimasurat').select2({
+                            placeholder: "Pilih Penerima Surat",
+                            allowClear: true
+                        });
+                    });
+                </script>
+                 
                 <div class="row mb-3">
                     <label for="penandatangan" class="col-md-4 col-form-label text-md-end">Penanda Tangan</label>
 

@@ -27,14 +27,6 @@
                         </select>
                     </div>
                 </div> 
-                
-                <div class="row mb-3">
-                    <label for="name" class="col-md-4 col-form-label text-md-end">Perihal</label>
-
-                    <div class="col-md-6">
-                        <input id="name" type="text" class="form-control" name="perihal" required>
-                    </div>
-                </div>
 
                 <div class="row mb-3">
                     <label for="name" class="col-md-4 col-form-label text-md-end">No. Surat</label>
@@ -51,6 +43,14 @@
                         <input id="name" type="text" class="form-control" name="pengirim" required>
                     </div>
                 </div> 
+                
+                <div class="row mb-3">
+                    <label for="name" class="col-md-4 col-form-label text-md-end">Perihal</label>
+
+                    <div class="col-md-6">
+                        <input id="name" type="text" class="form-control" name="perihal" required>
+                    </div>
+                </div>
 
                 <div class="row mb-3">
                     <label for="name" class="col-md-4 col-form-label text-md-end">Informasi Ringkas</label>

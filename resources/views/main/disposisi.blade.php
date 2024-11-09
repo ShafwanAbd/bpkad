@@ -27,9 +27,13 @@
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">No. Surat</th> 
+                        @if (Auth::user()->role == 'Superadmin' || Auth::user()->role == 'Admin')
+                            <th scope="col">Tujuan</th>  
+                        @endif
                         <th scope="col">Pengirim</th>  
-                        <th scope="col">Pembuat</th>  
                         <th scope="col">Perihal</th> 
+                        <th scope="col">Perintah</th>  
+                        <th scope="col">Dibuat Pada</th> 
                         <th scope="col">Status</th>  
                     </tr>
                 </thead>
@@ -42,9 +46,13 @@
                             <td>{{ $i++ }}</td>
                             <td class="hidden">{{ $datas2 = Suratmasuk::whereId($val->id_surat)->first() }}</td> 
                             <td>{{ $datas2->no_surat }}</td> 
+                            @if (Auth::user()->role == 'Superadmin' || Auth::user()->role == 'Admin')
+                                <td>{{ str_replace(';', ', ', $val->tujuan) }}</td> 
+                            @endif
                             <td>{{ $datas2->pengirim }}</td> 
-                            <td>{{ $val->pembuat }}</td> 
                             <td>{{ $datas2->perihal }}</td> 
+                            <td>{{ str_replace(';', ', ', $val->perintah) }}</td> 
+                            <td>{{ $datas2->created_at }}</td> 
                             <td><div class="btn {{ $val->status == 0 ? 'btn-warning' : 'btn-success' }}">{{ $val->status == 0 ? 'Belum Selesai' : 'Sudah Selesai' }}</div></td>  
                         </tr>
                     @endforeach

@@ -46,33 +46,34 @@
                         <label for="perintah" class="col-md-4 col-form-label text-md-end">Perintah</label>
                         <div class="col-md-6">
                             <div>
-                                <label><input type="checkbox" name="perintah[]" value="wakili"> Wakili / Hadir / Terima</label>
-                                <label><input type="checkbox" name="perintah[]" value="mendampingi"> Mendampingi Saya</label>
-                                <label><input type="checkbox" name="perintah[]" value="ditindaklanjuti"> Untuk Ditindaklanjuti</label>
+                                <label><input type="checkbox" name="perintah[]" value="Wakili / Hadir / Terima"> Wakili / Hadir / Terima</label>
+                                <label><input type="checkbox" name="perintah[]" value="Mendampingi Saya"> Mendampingi Saya</label>
+                                <label><input type="checkbox" name="perintah[]" value="Untuk Ditindaklanjuti"> Untuk Ditindaklanjuti</label>
                             </div>
                             <div>
-                                <label><input type="checkbox" name="perintah[]" value="pelajari"> Pelajari / Tela'ah / Sarannya</label>
-                                <label><input type="checkbox" name="perintah[]" value="dikaji"> Untuk dikaji sesuai dengan ketentuan</label>
+                                <label><input type="checkbox" name="perintah[]" value="Pelajari / Tela'ah / Sarannya"> Pelajari / Tela'ah / Sarannya</label>
+                                <label><input type="checkbox" name="perintah[]" value="Untuk dikaji sesuai dengan ketentuan"> Untuk dikaji sesuai dengan ketentuan</label>
                             </div>
                             <div>
-                                <label><input type="checkbox" name="perintah[]" value="dibantu"> Untuk dibantu / dipertimbangkan / sesuai dengan ketentuan</label>
+                                <label><input type="checkbox" name="perintah[]" value="Untuk dibantu / dipertimbangkan / sesuai dengan ketentuan"> Untuk dibantu / dipertimbangkan / sesuai dengan ketentuan</label>
                             </div>
                             <div>
-                                <label><input type="checkbox" name="perintah[]" value="selesaikan"> Selesaikan / proses sesuai ketentuan</label>
+                                <label><input type="checkbox" name="perintah[]" value="Selesaikan / proses sesuai ketentuan"> Selesaikan / proses sesuai ketentuan</label>
                             </div>
                             <div>
-                                <label><input type="checkbox" name="perintah[]" value="monitor"> Monitor realisasinya / perkembangannya</label>
-                                <label><input type="checkbox" name="perintah[]" value="pointers"> Siap Pointers / Sambutan / Bahan</label>
+                                <label><input type="checkbox" name="perintah[]" value="Monitor realisasinya / perkembangannya"> Monitor realisasinya / perkembangannya</label>
+                                <label><input type="checkbox" name="perintah[]" value="Siap Pointers / Sambutan / Bahan"> Siap Pointers / Sambutan / Bahan</label>
                             </div>
                             <div>
-                                <label><input type="checkbox" name="perintah[]" value="menghadap"> Menghadap / Informasinya</label>
-                                <label><input type="checkbox" name="perintah[]" value="membaca"> Membaca / File / Referensi</label>
+                                <label><input type="checkbox" name="perintah[]" value="Menghadap / Informasinya"> Menghadap / Informasinya</label>
+                                <label><input type="checkbox" name="perintah[]" value="Membaca / File / Referensi"> Membaca / File / Referensi</label>
                             </div>
                             <div>
-                                <label><input type="checkbox" name="perintah[]" value="agendakan"> Agendakan / Jadwalkan / Koordinasikan</label>
+                                <label><input type="checkbox" name="perintah[]" value="Agendakan / Jadwalkan / Koordinasikan"> Agendakan / Jadwalkan / Koordinasikan</label>
                             </div>
                         </div>
-                    </div> 
+                    </div>
+
 
                     <div class="row mb-3">
                         <label for="name" class="col-md-4 col-form-label text-md-end">Sifat</label>

@@ -9,11 +9,11 @@
         <div class="container shadow">
             <div class="flex" style="justify-content: space-between;">
                 <div class="py-1"> 
-                    <h4>Surat Masuk</h4>
+                    <h4>Surat Keluar</h4>
                 </div>
                 <div>
-                    @if(Auth::User()->role == 'Superadmin')
-                    <a href="{{ url('/suratmasuk/create') }}" >Tambah</a>
+                    @if(Auth::User()->role != 'Admin' && Auth::User()->role != 'Superadmin')
+                    <a href="{{ url('/suratkeluar/create') }}" >Tambah</a>
                     @endif
                     
                 </div>
@@ -26,10 +26,10 @@
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">No. Surat</th> 
-                        <th scope="col">Perihal</th> 
-                        <th scope="col">Pengirim</th>  
-                        <th scope="col">Dibuat Pada</th>  
-                        <th scope="col">Disposisi</th>
+                        <th scope="col">Perihal</th>  
+                        <th scope="col">Pemohon</th>  
+                        <th scope="col">Penandatangan</th>  
+                        <th scope="col">Dibuat Pada</th>   
                     </tr>
                 </thead>
                 <tbody>
@@ -37,22 +37,13 @@
                         $i = 1
                     @endphp
                     @foreach($datas1 as $key=>$val) 
-                        <tr class="hover1" onclick="window.location.href='{{ url("/suratmasuk/data/$val->id") }}'" style="cursor: pointer;">
+                        <tr class="hover1" onclick="window.location.href='{{ url("/suratkeluar/data/$val->id") }}'" style="cursor: pointer;">
                             <td>{{ $i++ }}</td>
                             <td>{{ $val->no_surat }}</td>
-                            <td>{{ $val->perihal }}</td>
-                            <td>{{ $val->pengirim }}</td> 
-                            <td>{{ $val->created_at }}</td> 
-
-                            @if($val->status_disposisi == 0)
-                            <td>
-                                <div class="btn btn-warning">Belum</div>
-                            </td>  
-                            @elseif($val->status_disposisi == 1)
-                            <td>
-                                <div class="btn btn-success">Sudah</div>
-                            </td>  
-                            @endif
+                            <td>{{ $val->perihal }}</td> 
+                            <td>{{ $val->pemohon }}</td> 
+                            <td>{{ $val->penandatangan }}</td> 
+                            <td>{{ $val->created_at }}</td>  
                         </tr>
                     @endforeach
                 </tbody>

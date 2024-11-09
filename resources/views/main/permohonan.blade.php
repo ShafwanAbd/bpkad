@@ -12,7 +12,7 @@
                     <h4>Permohonan</h4>
                 </div>
                 <div>
-                    @if(Auth::User()->role != 'Admin' && Auth::User()->role != 'Superadmin')
+                    @if(Auth::User()->role != 'Admin' && Auth::User()->role != 'Superadmin' && Auth::user()->role != 'Kepala Badan')
                     <a href="#" data-bs-toggle="modal" data-bs-target="#tambahpermohonan">Tambah</a>
  
                     <!-- Modal -->
@@ -50,12 +50,12 @@
                 @if($datas1->count() > 0)
                 <thead>
                     <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">No. Surat</th>
+                        <th scope="col">No</th> 
                         <th scope="col">Perihal</th>
                         <th scope="col">Pemohon</th>
                         <th scope="col">Verifikator/Korektor</th>
                         <th scope="col">Penanda Tanganan</th>
+                        <th scope="col">Dibuat Pada</th>
                         <th scope="col">Status</th>
                     </tr>
                 </thead>
@@ -65,8 +65,7 @@
                     @endphp
                     @foreach($datas1 as $key=>$val) 
                         <tr class="hover1" onclick="window.location.href='{{ url("/permohonan/data/$val->id") }}'" style="cursor: pointer;">
-                            <td>{{ $i++ }}</td>
-                            <td>{{ $val->no_surat }}</td>
+                            <td>{{ $i++ }}</td> 
                             <td>{{ $val->perihal }}</td>
                             <td>{{ $val->pemohon }}</td>
                             @if($val->status_koreksi == 1)
@@ -186,7 +185,8 @@
                                 </td> 
                             @endif
 
-                            <td>{{ $val->penandatangan }}</td> 
+                            <td>{{ $val->penandatangan }}</td>  
+                            <td>{{ $val->created_at }}</td> 
                             @if($val->status_koreksi == 1)
                                 <td>
                                     <div class="btn btn-danger">Dikoreksi</div>

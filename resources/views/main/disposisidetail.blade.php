@@ -55,27 +55,28 @@
                     </tr>   
                     <tr>
                         <td>Tujuan</td>
-                        <td>: {{ $datas1->tujuan }}</td>
-                    </tr> 
+                        <td>: {{ str_replace(';', ', ', $datas1->tujuan) }}</td>
+                        </tr> 
+                    <tr>
+                    <tr>
+                        <td>Perintah</td>
+                        <td>: {{ str_replace(';', ', ', $datas1->perintah) }}</td>
+                        </tr>  
                     <tr>
                         <td>Catatan</td>
                         <td>: {{ $datas1->catatan }}</td>
-                    </tr> 
-                    <tr>
-                        <td>Perintah</td>
-                        <td>: {{ $datas1->perintah }}</td>
                     </tr> 
                     <tr>
                         <td>Sifat</td>
                         <td>: {{ $datas1->sifat }}</td>
                     </tr> 
                     <tr>
-                        <td>Dibuat Pada</td>
-                        <td>: {{ $datas1->created_at }}</td>
-                    </tr> 
-                    <tr>
                         <td>Status Disposisi</td>
                         <td>: {{ $datas1->status == 0 ? 'Belum Selesai' : 'Sudah Selesai' }}</td>
+                    </tr> 
+                    <tr>
+                        <td>Dibuat Pada</td>
+                        <td>: {{ $datas1->created_at }}</td>
                     </tr> 
                 </table>
 
@@ -90,9 +91,12 @@
                         <a href="{{ url('/suratmasuk/createdisposisi/' . $datas1->id) }}" class="btn btn-primary my-2">Disposisi</a>
                         <a href="{{ url('/suratmasuk/createteruskan/' . $datas1->id) }}" class="btn btn-primary my-2">Teruskan</a>
     
+                    @elseif (in_array(Auth::user()->nama, explode(';', $datas1->tujuan)) && $datas1->status == 0)
+
+                        <a href="{{ asset('/suratmasuk/disposisidone/' . $datas1->id) }}" class="my-2 btn btn-primary">Selesai</a>
+
                     @endif 
 
-                    <a href="{{ asset('/suratmasuk/disposisidone/' . $datas1->id) }}" class="my-2 btn btn-primary">Selesai</a>
                     <a href="{{ asset('dokumen/suratmasuk/'.$datas1->dokumen) }}" class="my-2 btn btn-primary">Download Surat</a>
 
                 </div>

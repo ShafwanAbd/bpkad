@@ -30,7 +30,9 @@
     <!-- JS Select2 -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-
+    @php
+        use App\Models\Notifikasi;
+    @endphp
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -73,10 +75,22 @@
                                     <img src="{{ asset('image/Doorbell.png') }}">
                                 </a>
 
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="#">Notification 1 || Notification 1 || Notification 1 || Notification 1</a></li>
-                                    <li><a class="dropdown-item" href="#">Notification 1 || Notification 1 || Notification 1 || Notification 1</a></li>
-                                    <li><a class="dropdown-item" href="#">Notification 1 || Notification 1 || Notification 1 || Notification 1</a></li>
+                                <ul class="dropdown-menu dropdown-menu-end">                                     
+                                    <div class="hidden">{{ $datas1 = Notifikasi::where('id_user', Auth::user()->id)->get() }}</div> 
+                                    @foreach($datas1 as $key=>$val)    
+                                    @if ($val->tipe == 'suratmasuk')                                
+                                        <div class="hidden">{{ $datas2 = Suratmasuk::where('id', $val->id_notif_tujuan)->first() }}</div> 
+                                    @elseif ($val->tipe == 'suratkeluar')
+                                        <div class="hidden">{{ $datas2 = Suratkeluar::where('id', $val->id_notif_tujuan)->first() }}</div> 
+                                    @elseif ($val->tipe == 'disposisi')
+                                        <div class="hidden">{{ $datas2 = Disposisi::where('id', $val->id_notif_tujuan)->first() }}</div> 
+                                    @elseif ($val->tipe == 'disposisi')
+                                        <div class="hidden">{{ $datas2 = Disposisi::where('id', $val->id_notif_tujuan)->first() }}</div> 
+                                    @elseif ($val->tipe == 'disposisi')
+                                        <div class="hidden">{{ $datas2 = Disposisi::where('id', $val->id_notif_tujuan)->first() }}</div> 
+                                    @endif
+                                    <li><a class="dropdown-item" href="#">$datas2->perihal</a></li>
+                                    @endforeach
                                 </ul>
                             </li> 
 

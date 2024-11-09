@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Permohonan; 
 use App\Models\Suratmasuk; 
+use App\Models\Suratkeluar; 
 use App\Models\Disposisi; 
 use App\Models\Tembusan; 
 use App\Models\Terusan; 
@@ -32,6 +33,7 @@ class CommonController extends Controller
             'datas1'
         ));
     }      
+
     public function suratmasuk_detail(String $id){
         $datas1 = Suratmasuk::find($id);
         $datas2 = Disposisi::whereIn('id_surat', [$id])->get();
@@ -129,7 +131,11 @@ class CommonController extends Controller
     
     public function disposisi_index() {
         $user_name = Auth::user()->nama;
-        $datas1 = Disposisi::where('tujuan', 'like', '%' . $user_name . '%')->get();
+        if (Auth::user()->role == 'Superadmin' || Auth::user()->role == 'Admin'){
+            $datas1 = Disposisi::all();
+        } else {
+            $datas1 = Disposisi::where('tujuan', 'like', '%' . $user_name . '%')->get();
+        }
     
         return view('main.disposisi', compact('datas1'));
     }
@@ -158,9 +164,9 @@ class CommonController extends Controller
 
         $model1 = new Disposisi();
  
-        $model1->tujuan = implode(',', $request->tujuan);
+        $model1->tujuan = implode(';', $request->tujuan);
         $model1->catatan = $request->catatan;
-        $model1->perintah = implode(',' ,$request->perintah);
+        $model1->perintah = implode(';' ,$request->perintah);
         $model1->sifat = $request->sifat;
         $model1->id_surat = $id;
         $model1->status = 0;
@@ -184,6 +190,71 @@ class CommonController extends Controller
 
         return redirect('/disposisi');
     }
+
+    // SURAT KELUAR
+
+    public function suratkeluar_index(){
+        if (Auth::user()->role == 'Superadmin' || Auth::user()->role == 'Admin'){
+            $datas1 = Suratkeluar::all();
+        } else {
+            $datas1 = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')->get();
+        }
+
+        return view('main.suratkeluar', compact(
+            'datas1'
+        ));
+    }
+
+    public function suratkeluar_detail(String $id){
+        $datas1 = Suratkeluar::find($id); 
+
+        return view('main.suratkeluardetail', compact(
+            'datas1'
+        ));
+    }      
+
+    public function suratkeluar_create(){ 
+        $datas1 = User::whereNotIn('role', ['superadmin', 'admin'])->get();
+
+        return view('main.suratkeluarcreate', compact(
+            'datas1'
+        ));
+    }   
+
+    public function suratkeluar_create_upload(Request $request){    
+
+        if ($request->file('dokumen')) {
+            $file = $request->file('dokumen');
+    
+            // Periksa apakah file yang diunggah adalah PDF
+            if ($file->getClientOriginalExtension() == 'pdf') { 
+
+                $model1 = new Suratkeluar();        
+                
+                $model1->perihal = $request->perihal;
+                $model1->pemohon = Auth::user()->nama;
+                $model1->penandatangan = $request->penandatangan;
+                $model1->no_surat = $request->no_surat; 
+                $model1->tembusan = implode(';', $request->tembusan);
+                $model1->penerimasurat = implode(';', $request->penerimasurat);
+                $model1->isi = $request->isi; 
+                $model1->sifat = $request->sifat; 
+
+                // Ubah ekstensi nama file menjadi .pdf ,
+                $namaFile = "Dokumen" . $model1->id . ".pdf"; 
+                $model1->dokumen = $namaFile;
+                $file->move('dokumen/suratkeluar/', $namaFile);
+
+                $model1->save();  
+        
+            } else {
+                // Jika bukan PDF, Anda bisa mengembalikan pesan error
+                return back()->withErrors(['dokumen' => 'File yang diunggah harus dalam format PDF']);
+            }
+        } 
+
+        return redirect('/suratkeluar');
+    }   
 
     // PERMOHONAN
 

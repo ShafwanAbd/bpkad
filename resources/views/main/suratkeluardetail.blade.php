@@ -8,20 +8,12 @@
     <div class="permohonan_main main_side_menu permohonan_detail">
         <div class="container shadow">
             <div class="inner_container p-5">
-            <h3 class="text-align-center py-1">Surat Masuk Detail</h3>
+            <h3 class="text-align-center py-1">Surat Keluar Detail</h3>
                 <table class="detail-table">
                     <tr>
                         <td>Nomor Surat</td>
                         <td>: {{ $datas1->no_surat }}</td>
                     </tr> 
-                    <tr>
-                        <td>Pengirim</td>
-                        @if ($datas1->pengirim)
-                            <td>: {{ $datas1->pengirim }}</td>
-                        @else
-                            <td>: -</td>
-                        @endif
-                    </tr>   
                     <tr>
                         <td>Perihal</td>
                         @if ($datas1->perihal)
@@ -31,27 +23,45 @@
                         @endif
                     </tr>
                     <tr>
-                        <td>Informasi Ringkas</td>
-                        @if ($datas1->informasi_ringkas)
-                            <td>: {{ $datas1->informasi_ringkas }}</td>
+                        <td>Isi Surat</td>
+                        @if ($datas1->isi)
+                            <td>: {{ $datas1->isi }}</td>
                         @else
                             <td>: -</td>
                         @endif
                     </tr>
                     <tr>
-                        <td>Disposisi</td>
-                        @if ($datas1->status_disposisi == 0)
-                        <td>: Belum</td>
-                        @else
-                        <td>: 
-
-                        @foreach($datas2 as $key => $val)
-                            {{ $val->tujuan }}@if (!$loop->last), @endif
-                        @endforeach
-
-                        </td>
-                        @endif
+                        <td>Sifat</td>
+                        <td>: {{ $datas1->sifat }}</td>
                     </tr>
+                    <tr>
+                        <td>Tembusan</td>
+                        @if ($datas1->tembusan)
+                            <td>: {{ $datas1->tembusan }}</td>
+                        @else
+                            <td>: -</td>
+                        @endif
+                    </tr>   
+                    <tr>
+                        <td>Penerima Surat</td>
+                        @if ($datas1->penerimasurat)
+                            <td>: {{ $datas1->penerimasurat }}</td>
+                        @else
+                            <td>: -</td>
+                        @endif
+                    </tr>   
+                    <tr>
+                        <td>Penandatangan</td>
+                        @if ($datas1->penandatangan)
+                            <td>: {{ $datas1->penandatangan }}</td>
+                        @else
+                            <td>: -</td>
+                        @endif
+                    </tr>   
+                    <tr>
+                        <td>Pemohon</td> 
+                        <td>: {{ $datas1->pemohon }}</td> 
+                    </tr>   
                     <tr>
                         <td>Dibuat Pada</td>
                         <td>: {{ $datas1->created_at }}</td>

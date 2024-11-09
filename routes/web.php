@@ -59,7 +59,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/suratmasuk/createterusan/{id}', [CommonController::class, 'suratmasuk_create_terusan']);
     Route::get('/suratmasuk/disposisidone/{id}', [CommonController::class, 'suratmasuk_disposisi_done']);
 
-    Route::get('/suratkeluar', [CommonController::class, 'dashboard_index']); 
+    Route::get('/suratkeluar', [CommonController::class, 'suratkeluar_index']); 
+    Route::get('/suratkeluar/create', [CommonController::class, 'suratkeluar_create']); 
+    Route::post('/suratkeluar/create', [CommonController::class, 'suratkeluar_create_upload']); 
+    Route::get('/suratkeluar/data/{id}', [CommonController::class, 'suratkeluar_detail']);
 
     // General
     Route::get('/akun', [CommonController::class, 'akun_index']);

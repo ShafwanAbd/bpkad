@@ -11,13 +11,9 @@
             <h3 class="text-align-center py-1">Tembusan Detail</h3>
                 <table class="detail-table">
                     <tr>
-                        <td>Perihal</td>
-                        @if ($datas1->perihal)
-                            <td>: {{ $datas1->perihal }}</td>
-                        @else
-                            <td>: -</td>
-                        @endif
-                    </tr>
+                        <td>Nomor Surat</td>
+                        <td>: {{ $datas1->no_surat }}</td>
+                    </tr> 
                     <tr>
                         <td>Pengirim</td>
                         @if ($datas1->pengirim)
@@ -27,9 +23,13 @@
                         @endif
                     </tr>   
                     <tr>
-                        <td>Nomor Surat</td>
-                        <td>: {{ $datas1->no_surat }}</td>
-                    </tr> 
+                        <td>Perihal</td>
+                        @if ($datas1->perihal)
+                            <td>: {{ $datas1->perihal }}</td>
+                        @else
+                            <td>: -</td>
+                        @endif
+                    </tr>
                     <tr>
                         <td>Informasi Ringkas</td>
                         @if ($datas1->informasi_ringkas)
