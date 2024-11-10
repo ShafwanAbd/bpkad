@@ -22,6 +22,8 @@
             <a class="{{ request()->is('suratkeluar') ? 'active' : '' }}" href="{{ url('/suratkeluar') }}"><img src="{{ asset('image/Logout.png') }}">Surat Keluar</a>
             <a class="{{ request()->is('disposisi') ? 'active' : '' }}" href="{{ url('/disposisi') }}"><img src="{{ asset('image/Document.png') }}">Disposisi</a>
             <a class="{{ request()->is('tembusan') ? 'active' : '' }}" href="{{ url('/tembusan') }}"><img src="{{ asset('image/Documents.png') }}">Tembusan</a>
+            <a class="{{ request()->is('kelolaakun') ? 'active' : '' }}" href="{{ url('/kelolaakun') }}"><img src="{{ asset('image/Documents.png') }}">Kelola Akun</a>
+            <a class="{{ request()->is('kelolakantor') ? 'active' : '' }}" href="{{ url('/kelolakantor') }}"><img src="{{ asset('image/Documents.png') }}">Kelola Kantor</a>
             @elseif (Auth::user()->role == 'Admin')
             <a class="{{ request()->is('dashboard') ? 'active' : '' }}" href="{{ url('/dashboard') }}"><img src="{{ asset('image/Dashboard.png') }}">Dashboard</a>
             <a class="{{ request()->is('permohonan') ? 'active' : '' }}" href="{{ url('/permohonan') }}"><img src="{{ asset('image/Sign Document.png') }}">Permohonan</a>

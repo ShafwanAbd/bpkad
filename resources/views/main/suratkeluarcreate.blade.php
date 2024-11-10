@@ -72,16 +72,21 @@
                         });
                     });
                 </script>
-                 
+
                 <div class="row mb-3">
                     <label for="penerimasurat" class="col-md-4 col-form-label text-md-end">Penerima Surat</label>
 
-                    <div class="col-md-6">
-                        <select id="penerimasurat" class="form-control select2" name="penerimasurat[]" multiple="multiple">
-                            @foreach($datas1 as $key => $val)
-                                <option value="{{ $val->nama }}">{{ $val->nama }} ({{ $val->role }} {{ $val->jabatan }})</option>
+                    <div class="col-md-6 flex">
+                        <select id="penerimasurat" class="form-control select2" name="penerimasurat" required>
+                            <option value="" selected disabled>-- Pilih --</option>
+                            @foreach($datas2 as $key => $val)
+                            <option value="{{ $val->nama_kantor }}">{{ $val->nama_kantor }} ({{ $val->singkatan }})</option>
                             @endforeach
                         </select>
+                        
+                        @if (Auth::user()->role == 'Superadmin')
+                        <a href="{{ url('/tambahkantor') }}">Tambah</a>
+                        @endif
                     </div>
                 </div>
 

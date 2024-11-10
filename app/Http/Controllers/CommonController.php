@@ -9,6 +9,7 @@ use App\Models\Suratkeluar;
 use App\Models\Disposisi; 
 use App\Models\Tembusan; 
 use App\Models\Terusan; 
+use App\Models\Kantor; 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request; 
 
@@ -44,8 +45,27 @@ class CommonController extends Controller
     }      
 
     public function suratmasuk_create(){ 
-        return view('main.suratmasukcreate');
+        $datas1 = Kantor::all();
+
+        return view('main.suratmasukcreate', compact(
+            'datas1'
+        ));
     }   
+
+    public function tambahkantor(Request $request){
+        return view('main.tambahkantor');
+    }
+
+    public function tambahkantor_upload(Request $request){
+        $model1 = new Kantor();
+    
+        $model1->nama_kantor = $request->nama_kantor;
+        $model1->singkatan = $request->singkatan;
+
+        $model1->save();
+
+        return redirect('/suratmasuk/create');
+    }
 
     public function suratmasuk_create_terusan(String $id){ 
         $datas1 = User::whereNotIn('role', ['superadmin', 'admin'])->get();
@@ -215,9 +235,10 @@ class CommonController extends Controller
 
     public function suratkeluar_create(){ 
         $datas1 = User::whereNotIn('role', ['superadmin', 'admin'])->get();
+        $datas2 = Kantor::all();
 
         return view('main.suratkeluarcreate', compact(
-            'datas1'
+            'datas1', 'datas2'
         ));
     }   
 
@@ -545,5 +566,61 @@ class CommonController extends Controller
         $model1->delete();
 
         return redirect('/kelolaakun');
+    }
+
+    // KELOLA KANTOR 
+
+    public function kelolakantor_index(){
+        $datas1 = Kantor::all();
+
+        return view('kelolakantor', compact(
+            'datas1'
+        ));
+    }
+
+    public function kelolakantor_create(){
+
+        return view('kelolakantorcreate');
+    }
+
+    public function kelolakantor_create_upload(Request $request){ 
+
+        $model1 = new Kantor();
+
+        $model1->nama_kantor = $request->nama_kantor;
+        $model1->singkatan = $request->singkatan;
+
+        $model1->save();
+
+        return redirect('/kelolakantor');
+    }
+
+    public function kelolakantor_detail(String $id){
+        $datas1 = Kantor::find($id);
+
+        return view('kelolakantordetail', compact(
+            'datas1'
+        ));
+    }
+
+    public function kelolakantor_detail_upload(String $id, Request $request){ 
+
+        $model1 = Kantor::find($id);
+
+        $model1->nama_kantor = $request->nama_kantor;
+        $model1->singkatan = $request->singkatan;
+
+        $model1->save();
+
+        return redirect('/kelolakantor');
+    }
+
+    public function kelolakantor_delete(String $id){ 
+
+        $model1 = Kantor::find($id);
+
+        $model1->delete();
+
+        return redirect('/kelolakantor');
     }
 }

@@ -35,14 +35,33 @@
                         <input id="name" type="text" class="form-control" name="no_surat" required>
                     </div>
                 </div> 
-
+ 
                 <div class="row mb-3">
-                    <label for="name" class="col-md-4 col-form-label text-md-end">Pengirim</label>
+                    <label for="pengirim" class="col-md-4 col-form-label text-md-end">Pengirim</label>
 
-                    <div class="col-md-6">
-                        <input id="name" type="text" class="form-control" name="pengirim" required>
+                    <div class="col-md-6 flex">
+
+                        <select id="pengirim" class="form-control select2" name="pengirim" required>                                
+                            <option value="" selected disabled>-- Pilih --</option>
+                            @foreach($datas1 as $key => $val)
+                                <option value="{{ $val->nama_kantor }}">{{ $val->nama_kantor }} ({{ $val->singkatan }})</option>
+                            @endforeach
+                        </select>
+
+                        @if (Auth::user()->role == 'Superadmin')
+                        <a class="ml-1" href="{{ url('/tambahkantor') }}">Tambah</a>
+                        @endif
                     </div>
-                </div> 
+                </div>
+
+                <script>
+                    $(document).ready(function() {
+                        $('#pengirim').select2({
+                            placeholder: "Pilih Pengirim",
+                            allowClear: true
+                        });
+                    });
+                </script>
                 
                 <div class="row mb-3">
                     <label for="name" class="col-md-4 col-form-label text-md-end">Perihal</label>

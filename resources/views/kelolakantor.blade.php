@@ -14,10 +14,10 @@
         <div class="container shadow">
             <div class="flex" style="justify-content: space-between;"> 
                 <div class="py-1">
-                    <h4>Kelola Akun</h4>
+                    <h4>Kelola Kantor</h4>
                 </div>
                 <div>
-                    <a href="{{ url('/kelolaakun/create') }}" >Tambah</a>
+                    <a href="{{ url('/kelolakantor/create') }}" >Tambah</a>
                 </div>  
             </div>
 
@@ -28,10 +28,8 @@
                     <thead>
                         <tr> 
                             <th scope="col">No</th>
-                            <th scope="col">Role</th> 
-                            <th scope="col">Nama</th>  
-                            <th scope="col">Jabatan</th>   
-                            <th scope="col">Status</th>   
+                            <th scope="col">Nama Kantor</th> 
+                            <th scope="col">Singkatan</th>  
                         </tr>
                     </thead>
                     <tbody>
@@ -39,12 +37,10 @@
                             $i = 1
                         @endphp
                         @foreach($datas1 as $key=>$val) 
-                            <tr class="hover1" onclick="window.location.href='{{ url("/kelolaakun/data/$val->id") }}'" style="cursor: pointer;">
+                            <tr class="hover1" onclick="window.location.href='{{ url("/kelolakantor/data/$val->id") }}'" style="cursor: pointer;">
                                 <td>{{ $i++ }}</td>
-                                <td>{{$val->role ? $val->role : '-'}}</td> 
-                                <td>{{$val->nama ? $val->nama : '-'}}</td>  
-                                <td>{{$val->jabatan ? $val->jabatan : '-'}}</td>   
-                                <td>{{$val->status ? $val->status : '-'}}</td>   
+                                <td>{{$val->nama_kantor ? $val->nama_kantor : '-'}}</td> 
+                                <td>{{$val->singkatan ? $val->singkatan : '-'}}</td>  
                             </tr>
                         @endforeach
                     </tbody>

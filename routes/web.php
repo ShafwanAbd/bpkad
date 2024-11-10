@@ -38,20 +38,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/permohonan/verifikasi3/{id}', [CommonController::class, 'permohonan_verifikasi3']);
     Route::get('/permohonan/verifikasi4/{id}', [CommonController::class, 'permohonan_verifikasi4']);
     
-
     Route::get('/penandatanganan', [CommonController::class, 'dashboard_index']);
-
 
     Route::get('/tembusan', [CommonController::class, 'tembusan_index']);
     Route::get('/tembusan/data/{id}', [CommonController::class, 'tembusan_detail']);
-
 
     Route::get('/suratmasuk', [CommonController::class, 'suratmasuk_index']);
     Route::get('/suratmasuk/create', [CommonController::class, 'suratmasuk_create']);
     Route::post('/suratmasuk/create', [CommonController::class, 'suratmasuk_create_upload']);
     Route::get('/suratmasuk/data/{id}', [CommonController::class, 'suratmasuk_detail']);
+    Route::get('/tambahkantor', [CommonController::class, 'tambahkantor']);
+    Route::post('/tambahkantor', [CommonController::class, 'tambahkantor_upload']);
  
-    
     Route::get('/disposisi', [CommonController::class, 'disposisi_index']);    
     Route::get('/disposisi/data/{id}', [CommonController::class, 'disposisi_detail']);
     Route::get('/suratmasuk/createdisposisi/{id}', [CommonController::class, 'suratmasuk_create_disposisi']);
@@ -72,6 +70,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/kelolaakun/create', [CommonController::class, 'kelolaakun_create']);
     Route::post('/kelolaakun/create', [CommonController::class, 'kelolaakun_create_upload']);
     Route::get('/kelolaakun/delete/{id}', [CommonController::class, 'kelolaakun_delete']);
+
+    Route::get('/kelolakantor', [CommonController::class, 'kelolakantor_index']);
+    Route::get('/kelolakantor/data/{id}', [CommonController::class, 'kelolakantor_detail']);
+    Route::post('/kelolakantor/data/{id}', [CommonController::class, 'kelolakantor_detail_upload']);
+    Route::get('/kelolakantor/create', [CommonController::class, 'kelolakantor_create']);
+    Route::post('/kelolakantor/create', [CommonController::class, 'kelolakantor_create_upload']);
+    Route::get('/kelolakantor/delete/{id}', [CommonController::class, 'kelolakantor_delete']);
 });
 
 
