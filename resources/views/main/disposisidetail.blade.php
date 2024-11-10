@@ -89,11 +89,11 @@
                     @if (Auth::user()->role == 'Kepala Badan')
  
                         <a href="{{ url('/suratmasuk/createdisposisi/' . $datas1->id) }}" class="btn btn-primary my-2">Disposisi</a>
-                        <a href="{{ url('/suratmasuk/createteruskan/' . $datas1->id) }}" class="btn btn-primary my-2">Teruskan</a>
     
                     @elseif (in_array(Auth::user()->nama, explode(';', $datas1->tujuan)) && $datas1->status == 0)
 
                         <a href="{{ asset('/suratmasuk/disposisidone/' . $datas1->id) }}" class="my-2 btn btn-primary">Selesai</a>
+                        <a href="{{ asset('/disposisilanjut/create/' . $datas1->id) }}" class="my-2 btn btn-primary">Disposisi Lanjut</a>
 
                     @endif 
 

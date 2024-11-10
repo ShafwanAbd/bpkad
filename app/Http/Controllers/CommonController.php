@@ -203,6 +203,39 @@ class CommonController extends Controller
         return redirect('/suratmasuk');
     }
 
+    public function disposisilanjut_create_index(String $id){ 
+        $datas1 = User::whereNotIn('role', ['superadmin', 'admin'])->get();
+        $datas3 = Disposisi::find($id);
+        $datas2 = Suratmasuk::find($datas3->id_surat);
+
+        return view('main.disposisilanjutcreate', compact(
+            'datas1', 'datas2', 'datas3'
+        ));
+    }   
+
+    public function disposisilanjut_create_upload(Request $request, String $id){
+
+        $model1 = new Disposisi();
+ 
+        $model1->tujuan = implode(';', $request->tujuan);
+        $model1->catatan = $request->catatan;
+        $model1->perintah = implode(';' ,$request->perintah);
+        $model1->sifat = $request->sifat;
+        $model1->id_surat = $id;
+        $model1->status = 0;
+        $model1->pembuat = Auth::user()->nama; 
+
+        $model1->save();
+
+        $model2 = Suratmasuk::find($id);
+
+        $model2->status_disposisi = 1;
+
+        $model2->save();
+
+        return redirect('/suratmasuk');
+    }
+
     public function suratmasuk_disposisi_done(String $id){
         $model1 = Disposisi::find($id);
         $model1->status = 1;

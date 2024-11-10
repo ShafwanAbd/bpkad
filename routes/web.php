@@ -53,7 +53,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/disposisi', [CommonController::class, 'disposisi_index']);    
     Route::get('/disposisi/data/{id}', [CommonController::class, 'disposisi_detail']);
     Route::get('/suratmasuk/createdisposisi/{id}', [CommonController::class, 'suratmasuk_create_disposisi']);
-    Route::post('/suratmasuk/createdisposisi/{id}', [CommonController::class, 'suratmasuk_create_disposisi_upload']);
+    Route::post('/suratmasuk/createdisposisi/{id}', [CommonController::class, 'suratmasuk_create_disposisi_upload']); 
+    Route::get('/disposisilanjut/create/{id}', [CommonController::class, 'disposisilanjut_create_index']);    
+    Route::post('/disposisilanjut/create/{id}', [CommonController::class, 'disposisilanjut_create_upload']);    
     Route::get('/suratmasuk/createterusan/{id}', [CommonController::class, 'suratmasuk_create_terusan']);
     Route::get('/suratmasuk/disposisidone/{id}', [CommonController::class, 'suratmasuk_disposisi_done']);
 
