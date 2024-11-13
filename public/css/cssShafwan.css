@@ -18,7 +18,7 @@
     margin-left: 20%;
     padding: 2vh 1vw;
     background-color: #EFEFEF;
-    width: 100%;
+    width: calc(100vw - 20%);
     min-height: 90vh;
     gap: 1.75vw;
 }
@@ -46,6 +46,7 @@
 }
 
 .main_side_menu .container .data_container {
+    overflow-x: auto;
     width: 100%;
     min-height: 75vh;
     border-radius: 10px;

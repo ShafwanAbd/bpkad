@@ -10,19 +10,20 @@
     @include('layouts.app_menu')
 
     <div class="permohonan_main main_side_menu">
-
         <div class="container shadow">
-            <div class="flex" style="justify-content: space-between;"> 
-                <div class="py-1">
-                    <h4>Kelola Kantor</h4>
+            <div class="d-flex justify-content-between align-items-center mb-3 kelolakantor-header">
+                <div class="d-flex align-items-center gap-3">
+                    <h4 class="mb-0">Kelola Kantor</h4>
+                    <div id="dataTablesLengthWrapper"></div> 
                 </div>
-                <div>
+                <div class="d-flex align-items-center gap-3">
+                    <div id="dataTablesFilterWrapper"></div>
                     <a href="{{ url('/kelolakantor/create') }}" >Tambah</a>
-                </div>  
+                </div>
             </div>
-
-            <div class="data_container mt-2">
-                <table class="table">
+            
+            <div class="data_container mt-2" style="overflow-x: auto;">
+                <table id="kelolakantorTable" class="display nowrap cell-border hover" cellspacing="0" style="width:100%">   
                     
                     @if($datas1->count() > 0)
                     <thead>
@@ -55,7 +56,19 @@
             </div>
         </div>
     </div>
-
-
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        var table = $('#kelolakantorTable').DataTable({
+            dom: 'lftip',
+            responsive: true,
+        });
+    
+        $('#dataTablesFilterWrapper').html($('.dataTables_filter'));
+        $('#dataTablesLengthWrapper').html($('.dataTables_length'));
+    });
+</script>    
 @endsection

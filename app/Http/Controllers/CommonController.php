@@ -290,7 +290,7 @@ class CommonController extends Controller
                 $model1->penandatangan = $request->penandatangan;
                 $model1->no_surat = $request->no_surat; 
                 $model1->tembusan = implode(';', $request->tembusan);
-                $model1->penerimasurat = implode(';', $request->penerimasurat);
+                $model1->penerimasurat = $request->penerimasurat;
                 $model1->isi = $request->isi; 
                 $model1->sifat = $request->sifat; 
 
