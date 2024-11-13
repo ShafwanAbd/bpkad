@@ -130,6 +130,16 @@ tr .hover1 {
     text-align: center;
 }
 
+/* BLUM DIBACA */
+
+.blum_dibaca {
+    background-color: red;
+    margin-left: 0.5vw;
+    padding: 0.5vh 0.6vw;
+    border-radius: 500px;
+    color: white;
+    font-size: 0.9rem;
+}
 
 /* NAVBAR */
 

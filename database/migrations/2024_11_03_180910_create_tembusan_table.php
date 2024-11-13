@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('informasi_ringkas');   
             $table->string('pengirim');
             $table->string('dokumen')->nullable(); 
+            $table->string('status_dibaca')->default('0');
             $table->timestamps();
         });
     }

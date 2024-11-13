@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('isi');
             $table->string('tipe')->nullable();
             $table->string('id_notiftujuan')->nullable();
+            $table->string('status_dibaca')->default('0');
             $table->timestamps();
         });
     }

@@ -72,8 +72,20 @@
                     </tr> 
                     <tr>
                         <td>Status Disposisi</td>
-                        <td>: {{ $datas1->status == 0 ? 'Belum Selesai' : 'Sudah Selesai' }}</td>
+                        @if ($datas1->status == 0)
+                        <td>: Belum Selesai</td>
+                        @elseif ($datas1->status == 1)                        
+                        <td>: Selesai</td>
+                        @elseif ($datas1->status == 2)                     
+                        <td>: Disposisi Lanjut</td>          
+                        @endif
                     </tr> 
+                    @if ($datas1->status == 2)
+                    <tr>
+                        <td>Disposisi Ke</td>
+                        <td>: {{ $datas1->disposisi_lanjut }}</td>
+                    </tr> 
+                    @endif
                     <tr>
                         <td>Dibuat Pada</td>
                         <td>: {{ $datas1->created_at }}</td>
@@ -93,8 +105,10 @@
                     @elseif (in_array(Auth::user()->nama, explode(';', $datas1->tujuan)) && $datas1->status == 0)
 
                         <a href="{{ asset('/suratmasuk/disposisidone/' . $datas1->id) }}" class="my-2 btn btn-primary">Selesai</a>
+                        
+                        @if ($datas1->status != 2 && Auth::user()->role != 'Staf')
                         <a href="{{ asset('/disposisilanjut/create/' . $datas1->id) }}" class="my-2 btn btn-primary">Disposisi Lanjut</a>
-
+                        @endif
                     @endif 
 
                     <a href="{{ asset('dokumen/suratmasuk/'.$datas1->dokumen) }}" class="my-2 btn btn-primary">Download Surat</a>

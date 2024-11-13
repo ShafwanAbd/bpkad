@@ -28,8 +28,9 @@
                         <th scope="col">No</th>
                         <th scope="col">No. Surat</th> 
                         @if (Auth::user()->role == 'Superadmin' || Auth::user()->role == 'Admin')
-                            <th scope="col">Tujuan</th>  
+                            <th scope="col">Tujuan</th>   
                         @endif
+                        <th scope="col">Pembuat</th>  
                         <th scope="col">Pengirim</th>  
                         <th scope="col">Perihal</th> 
                         <th scope="col">Perintah</th>  
@@ -49,11 +50,20 @@
                             @if (Auth::user()->role == 'Superadmin' || Auth::user()->role == 'Admin')
                                 <td>{{ str_replace(';', ', ', $val->tujuan) }}</td> 
                             @endif
+                            <td>{{ $val->pembuat }}</td>  
                             <td>{{ $datas2->pengirim }}</td> 
                             <td>{{ $datas2->perihal }}</td> 
                             <td>{{ str_replace(';', ', ', $val->perintah) }}</td> 
-                            <td>{{ $datas2->created_at }}</td> 
-                            <td><div class="btn {{ $val->status == 0 ? 'btn-warning' : 'btn-success' }}">{{ $val->status == 0 ? 'Belum Selesai' : 'Sudah Selesai' }}</div></td>  
+                            <td>{{ $val->created_at }}</td> 
+                            <td>
+                                @if ($val->status == 0)
+                                <div class="btn btn-warning">Belum Selesai</div>
+                                @elseif ($val->status == 1)
+                                <div class="btn btn-success">Selesai</div>
+                                @elseif ($val->status == 2)
+                                <div class="btn btn-success">Disposisi Lanjut</div>
+                                @endif
+                            </td>  
                         </tr>
                     @endforeach
                 </tbody>

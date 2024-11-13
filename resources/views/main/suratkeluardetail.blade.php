@@ -74,11 +74,6 @@
                 </div> -->
 
                 <div class="py-4">
-                    @if (Auth::user()->role == 'Kepala Badan')
- 
-                        <a href="{{ url('/suratmasuk/createdisposisi/' . $datas1->id) }}" class="btn btn-primary my-2">Disposisi</a>
-    
-                    @endif
 
                     <a href="{{ asset('dokumen/suratmasuk/'.$datas1->dokumen) }}" class="my-2 btn btn-primary">Download Surat</a>
 

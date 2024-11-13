@@ -10,7 +10,7 @@
             <div class="inner_container p-5">
                 <h3 class="text-align-center py-4">Disposisi Lanjut</h3>  
                     
-                <form method="POST" action="{{ url('/disposisilanjut/create/' . $datas2->id) }}" enctype="multipart/form-data"> 
+                <form method="POST" action="{{ url('/disposisilanjut/create/' . $datas3->id) }}" enctype="multipart/form-data"> 
                     @csrf 
                     
                     <div class="row mb-3">
