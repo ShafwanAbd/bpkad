@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('pesan_koreksi')->nullable();
             $table->string('pemohon');
             $table->string('dokumen')->nullable();
+            $table->string('status_dibaca')->default('0');
             $table->string('status');
             $table->timestamps();
         });

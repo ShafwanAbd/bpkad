@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('pengirim');
             $table->string('dokumen')->nullable();
             $table->string('status_disposisi');
+            $table->string('status_dibaca')->default('0');
             $table->timestamps();
         });
     }

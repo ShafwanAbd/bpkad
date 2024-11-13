@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('pembuat'); 
             $table->string('id_surat'); 
             $table->string('status'); 
+            $table->string('status_dibaca')->default('0');
+            $table->string('disposisi_lanjut')->nullable();
             $table->timestamps();
         });
     }

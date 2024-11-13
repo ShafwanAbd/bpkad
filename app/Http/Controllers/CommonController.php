@@ -16,44 +16,193 @@ use Illuminate\Http\Request;
 class CommonController extends Controller
 {
     public function dashboard_index(){ 
-        $permohonan = Permohonan::all()->count();
-        $tembusan = Tembusan::all()->count();
-        $suratmasuk = Suratmasuk::all()->count(); 
-        $disposisi = disposisi::all()->count(); 
 
-        return view('main.dashboard', compact(
-            'permohonan', 'tembusan', 'suratmasuk', 'disposisi'
-        ));
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+            $permohonancount = Permohonan::all()->count();
+            $tembusancount = Tembusan::all()->count();
+            $suratmasukcount = Suratmasuk::all()->count(); 
+            $suratkeluarcount = Suratkeluar::all()->count(); 
+            $disposisicount = disposisi::all()->count(); 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all();   
+
+            return view('main.dashboard', compact(
+                'permohonancount', 'tembusancount', 'suratmasukcount', 'suratkeluarcount', 'disposisicount', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+            $permohonancount = Permohonan::all()->count();
+            $tembusancount = Tembusan::all()->count();
+            $suratmasukcount = Suratmasuk::all()->count(); 
+            $suratkeluarcount = Suratkeluar::all()->count(); 
+            $disposisicount = disposisi::all()->count(); 
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();     
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();   
+
+            return view('main.dashboard', compact(
+                'permohonancount', 'tembusancount', 'suratmasukcount', 'suratkeluarcount', 'disposisicount', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        }
     } 
 
     // SURAT MASUK
     public function suratmasuk_index(){
         $datas1 = Suratmasuk::all();
+        
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
 
-        return view('main.suratmasuk', compact(
-            'datas1'
-        ));
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all();  
+
+            return view('main.suratmasuk', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();     
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();  
+
+            return view('main.suratmasuk', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        }
     }      
 
     public function suratmasuk_detail(String $id){
         $datas1 = Suratmasuk::find($id);
         $datas2 = Disposisi::whereIn('id_surat', [$id])->get();
 
-        return view('main.suratmasukdetail', compact(
-            'datas1', 'datas2'
-        ));
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all(); 
+
+            return view('main.suratmasukdetail', compact(
+                'datas1', 'datas2', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();  
+
+            return view('main.suratmasukdetail', compact(
+                'datas1', 'datas2', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        }
     }      
 
     public function suratmasuk_create(){ 
         $datas1 = Kantor::all();
 
-        return view('main.suratmasukcreate', compact(
-            'datas1'
-        ));
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all();   
+
+            return view('main.suratmasukcreate', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();  
+
+            return view('main.suratmasukcreate', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        }
     }   
 
     public function tambahkantor(Request $request){
-        return view('main.tambahkantor');
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all(); 
+
+            return view('main.tambahkantor', compact(
+                'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();  
+
+            return view('main.tambahkantor', compact(
+                'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        }
     }
 
     public function tambahkantor_upload(Request $request){
@@ -72,7 +221,7 @@ class CommonController extends Controller
         $datas2 = Suratmasuk::find($id);
 
         return view('main.suratmasukterusancreate', compact(
-            'datas1', 'datas2'
+            'datas1', 'datas2', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
         ));
     }   
 
@@ -131,33 +280,123 @@ class CommonController extends Controller
 
     public function tembusan_index(){ 
         // $datas1 = Disposisi::where('tujuan', 'like', '%' . $user_name . '%')->get();
-        $datas1 = Tembusan::all();     
+        $datas1 = Tembusan::all();   
 
-        return view('main.tembusan', compact(
-            'datas1'
-        ));
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all();  
+
+            return view('main.tembusan', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();    
+
+            return view('main.tembusan', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        }
     }   
 
     public function tembusan_detail(String $id){
         $datas1 = Tembusan::find($id); 
+        $datas1->status_dibaca = 1;
+        $datas1->save(); 
 
-        return view('main.tembusandetail', compact(
-            'datas1'
-        ));
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all();  
+
+            return view('main.tembusandetail', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all(); 
+
+            return view('main.tembusandetail', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        }
     }      
 
     // DISPOSISI
 
     
-    public function disposisi_index() {
-        $user_name = Auth::user()->nama;
+    public function disposisi_index() { 
         if (Auth::user()->role == 'Superadmin' || Auth::user()->role == 'Admin'){
             $datas1 = Disposisi::all();
         } else {
-            $datas1 = Disposisi::where('tujuan', 'like', '%' . $user_name . '%')->get();
+            $datas1 = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
         }
+
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all(); 
     
-        return view('main.disposisi', compact('datas1'));
+            return view('main.disposisi', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();  
+    
+            return view('main.disposisi', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        }
     }
       
 
@@ -165,38 +404,99 @@ class CommonController extends Controller
     public function disposisi_detail(String $id){
         $datas1 = Disposisi::find($id);
         $datas2 = Suratmasuk::find($datas1->id_surat);
+ 
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
 
-        return view('main.disposisidetail', compact(
-            'datas1', 'datas2'
-        ));
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all(); 
+    
+            return view('main.disposisidetail', compact(
+                'datas1', 'datas2', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();  
+  
+            return view('main.disposisidetail', compact(
+                'datas1', 'datas2', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        }
     }      
 
     public function suratmasuk_create_disposisi(String $id){ 
         $datas1 = User::whereNotIn('role', ['superadmin', 'admin'])->get();
         $datas2 = Suratmasuk::find($id);
 
-        return view('main.suratmasukdisposisicreate', compact(
-            'datas1', 'datas2'
-        ));
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all(); 
+    
+            return view('main.suratmasukdisposisicreate', compact(
+                'datas1', 'datas2', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();  
+  
+            return view('main.suratmasukdisposisicreate', compact(
+                'datas1', 'datas2', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        }
     }   
 
     public function suratmasuk_create_disposisi_upload(Request $request, String $id){
 
-        $model1 = new Disposisi();
- 
-        $model1->tujuan = implode(';', $request->tujuan);
-        $model1->catatan = $request->catatan;
-        $model1->perintah = implode(';' ,$request->perintah);
-        $model1->sifat = $request->sifat;
-        $model1->id_surat = $id;
-        $model1->status = 0;
-        $model1->pembuat = Auth::user()->nama; 
-
-        $model1->save();
+        foreach($request->tujuan as $tujuan){
+            $model1 = new Disposisi();
+     
+            $model1->tujuan = $tujuan;
+            $model1->catatan = $request->catatan;
+            $model1->perintah = implode(';' ,$request->perintah);
+            $model1->sifat = $request->sifat;
+            $model1->id_surat = $id;
+            $model1->status = 0;
+            $model1->pembuat = Auth::user()->nama; 
+    
+            $model1->save();
+        }
 
         $model2 = Suratmasuk::find($id);
 
         $model2->status_disposisi = 1;
+        $model2->status_dibaca = 1;
 
         $model2->save();
 
@@ -207,38 +507,78 @@ class CommonController extends Controller
         $datas1 = User::whereNotIn('role', ['superadmin', 'admin'])->get();
         $datas3 = Disposisi::find($id);
         $datas2 = Suratmasuk::find($datas3->id_surat);
+ 
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
 
-        return view('main.disposisilanjutcreate', compact(
-            'datas1', 'datas2', 'datas3'
-        ));
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all(); 
+    
+            return view('main.disposisilanjutcreate', compact(
+                'datas1', 'datas2', 'datas3', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();  
+  
+            return view('main.disposisilanjutcreate', compact(
+                'datas1', 'datas2', 'datas3', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        }
     }   
 
     public function disposisilanjut_create_upload(Request $request, String $id){
 
-        $model1 = new Disposisi();
- 
-        $model1->tujuan = implode(';', $request->tujuan);
-        $model1->catatan = $request->catatan;
-        $model1->perintah = implode(';' ,$request->perintah);
-        $model1->sifat = $request->sifat;
-        $model1->id_surat = $id;
-        $model1->status = 0;
-        $model1->pembuat = Auth::user()->nama; 
+        $model1 = Disposisi::find($id);
+
+        $model1->status = 2;
+        $model1->status_dibaca = 1; 
+        $model1->disposisi_lanjut = implode(';', $request->tujuan);
 
         $model1->save();
 
-        $model2 = Suratmasuk::find($id);
+        foreach($request->tujuan as $tujuan){ 
+            $model2 = new Disposisi();
+     
+            $model2->tujuan = $tujuan;
+            $model2->catatan = $request->catatan;
+            $model2->perintah = implode(';' ,$request->perintah);
+            $model2->sifat = $request->sifat;
+            $model2->id_surat = $model1->id_surat;
+            $model2->status = 0;
+            $model2->pembuat = Auth::user()->nama; 
+    
+            $model2->save();
+        }
 
-        $model2->status_disposisi = 1;
+        // $model2 = Suratmasuk::find($id);
 
-        $model2->save();
+        // $model2->status_disposisi = 1;
 
-        return redirect('/suratmasuk');
+        // $model2->save();
+
+        return redirect('/disposisi');
     }
 
     public function suratmasuk_disposisi_done(String $id){
         $model1 = Disposisi::find($id);
         $model1->status = 1;
+        $model1->status_dibaca = 1; 
         $model1->save();
 
         return redirect('/disposisi');
@@ -250,29 +590,118 @@ class CommonController extends Controller
         if (Auth::user()->role == 'Superadmin' || Auth::user()->role == 'Admin'){
             $datas1 = Suratkeluar::all();
         } else {
-            $datas1 = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')->get();
+            $datas1 = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
         }
 
-        return view('main.suratkeluar', compact(
-            'datas1'
-        ));
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all(); 
+
+            return view('main.suratkeluar', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            )); 
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();  
+
+            return view('main.suratkeluar', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        }
     }
 
     public function suratkeluar_detail(String $id){
         $datas1 = Suratkeluar::find($id); 
+        $datas1->status_dibaca = 1;
+        $datas1->save(); 
 
-        return view('main.suratkeluardetail', compact(
-            'datas1'
-        ));
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all(); 
+
+            return view('main.suratkeluardetail', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));  
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();  
+
+            return view('main.suratkeluardetail', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            )); 
+        }
     }      
 
     public function suratkeluar_create(){ 
         $datas1 = User::whereNotIn('role', ['superadmin', 'admin'])->get();
         $datas2 = Kantor::all();
 
-        return view('main.suratkeluarcreate', compact(
-            'datas1', 'datas2'
-        ));
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all(); 
+
+            return view('main.suratkeluarcreate', compact(
+                'datas1', 'datas2', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();  
+
+            return view('main.suratkeluarcreate', compact(
+                'datas1', 'datas2', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        }
     }   
 
     public function suratkeluar_create_upload(Request $request){    
@@ -314,7 +743,17 @@ class CommonController extends Controller
 
     public function permohonan_index(){
         if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
-            $datas1 = Permohonan::all();
+            $datas1 = Permohonan::all(); 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all(); 
+
+            return view('main.permohonan', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
         } else {
             $datas1 = Permohonan::where('penandatangan', Auth::user()->nama)
             ->orWhere('pemohon', Auth::user()->nama)
@@ -323,27 +762,99 @@ class CommonController extends Controller
             ->orWhere('verifikator3', Auth::user()->nama)
             ->orWhere('verifikator4', Auth::user()->nama)
             ->get();        
-        }
 
-        return view('main.permohonan', compact(
-            'datas1'
-        ));
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();     
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();  
+
+
+            return view('main.permohonan', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        }
     }   
 
     public function permohonan_detail(String $id){
         $datas1 = Permohonan::find($id);
+          
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
 
-        return view('main.permohonandetail', compact(
-            'datas1'
-        ));
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all(); 
+ 
+            return view('main.permohonandetail', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();  
+
+            return view('main.permohonandetail', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        }
     }
 
     public function permohonan_create() { 
         $datas1 = User::whereNotIn('role', ['superadmin', 'admin'])->get();
-    
-        return view('main.permohonancreate', compact(
-            'datas1'
-        ));
+        
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all(); 
+
+            return view('main.permohonancreate', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();  
+
+            return view('main.permohonancreate', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        }
     }
 
     public function permohonan_create_upload(Request $request){  
@@ -379,10 +890,39 @@ class CommonController extends Controller
 
     public function permohonan_verifikator(){ 
         $datas1 = User::whereNotIn('role', ['superadmin', 'admin'])->get();
+ 
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
 
-        return view('main.permohonanverifikator', compact(
-            'datas1'
-        ));
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all(); 
+            
+            return view('main.permohonanverifikator', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();  
+
+            return view('main.permohonanverifikator', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        }
     }
 
     public function permohonan_create_verifikator_upload(Request $request){  
@@ -426,7 +966,9 @@ class CommonController extends Controller
 
         $model1 = Permohonan::find($id);
 
-        $model1->status = -1;
+        $model1->status = -1; 
+        $model1->status_dibaca = 1; 
+
         $model1->save();
 
         return redirect('/permohonan');
@@ -448,8 +990,42 @@ class CommonController extends Controller
         $datas1 = User::whereNotIn('role', ['superadmin', 'admin'])->get();
         $datas2 = Permohonan::find($id);
 
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all(); 
+            
+
+            return view('main.permohonanrevisicreate', compact(
+                'datas1', 'datas2', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();  
+ 
+            return view('main.permohonanrevisicreate', compact(
+                'datas1', 'datas2', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        }
+
         return view('main.permohonanrevisicreate', compact(
-            'datas1', 'datas2'
+            'datas1', 'datas2', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
         ));
     } 
 
@@ -528,20 +1104,111 @@ class CommonController extends Controller
     // Akun
 
     public function akun_index(){
-        return view('akun');
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all();  
+
+            return view('akun', compact(
+                'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all(); 
+
+            return view('akun', compact(
+                'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } 
     }
 
     public function kelolaakun_index(){
         $datas1 = User::all();
 
-        return view('kelolaakun', compact(
-            'datas1'
-        ));
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all();  
+
+            return view('kelolaakun', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all(); 
+
+            return view('kelolaakun', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        }
     }
 
     public function kelolaakun_create(){
 
-        return view('kelolaakuncreate');
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all();  
+
+            return view('kelolaakuncreate', compact(
+                'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all(); 
+
+            return view('kelolaakuncreate', compact(
+                'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } 
     }
 
     public function kelolaakun_create_upload(Request $request){ 
@@ -565,9 +1232,38 @@ class CommonController extends Controller
     public function kelolaakun_detail(String $id){
         $datas1 = User::find($id);
 
-        return view('kelolaakundetail', compact(
-            'datas1'
-        ));
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all(); 
+
+            return view('kelolaakundetail', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all(); 
+
+            return view('kelolaakundetail', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } 
     }
 
     public function kelolaakun_detail_upload(String $id, Request $request){ 
@@ -606,14 +1302,74 @@ class CommonController extends Controller
     public function kelolakantor_index(){
         $datas1 = Kantor::all();
 
-        return view('kelolakantor', compact(
-            'datas1'
-        ));
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all(); 
+            
+            return view('kelolakantor', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();  
+
+            return view('kelolakantor', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } 
     }
 
     public function kelolakantor_create(){
 
-        return view('kelolakantorcreate');
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all(); 
+
+            return view('kelolakantorcreate', compact(
+                'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();  
+
+            return view('kelolakantorcreate', compact(
+                'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } 
     }
 
     public function kelolakantor_create_upload(Request $request){ 
@@ -631,9 +1387,38 @@ class CommonController extends Controller
     public function kelolakantor_detail(String $id){
         $datas1 = Kantor::find($id);
 
-        return view('kelolakantordetail', compact(
-            'datas1'
-        ));
+        if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Superadmin'){ 
+
+            $permohonan = Permohonan::all();
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = suratkeluar::all();
+            $disposisi = Disposisi::all();
+            $tembusan = Tembusan::all(); 
+
+            return view('kelolakantordetail', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } else {    
+
+            $permohonan = Permohonan::where('penandatangan', Auth::user()->nama)
+            ->orWhere('pemohon', Auth::user()->nama)
+            ->orWhere('verifikator1', Auth::user()->nama)
+            ->orWhere('verifikator2', Auth::user()->nama)
+            ->orWhere('verifikator3', Auth::user()->nama)
+            ->orWhere('verifikator4', Auth::user()->nama)
+            ->get();    
+
+            $suratmasuk = Suratmasuk::all();
+            $suratkeluar = Suratkeluar::where('pemohon', 'like', '%' . Auth::user()->nama . '%')
+            ->orWhere('penandatangan', Auth::user()->nama)
+            ->get();
+            $disposisi = Disposisi::where('tujuan', 'like', '%' . Auth::user()->nama . '%')->get();
+            $tembusan = Tembusan::all();  
+
+            return view('kelolakantordetail', compact(
+                'datas1', 'permohonan', 'suratmasuk', 'suratkeluar', 'disposisi', 'tembusan'
+            ));
+        } 
     }
 
     public function kelolakantor_detail_upload(String $id, Request $request){ 
